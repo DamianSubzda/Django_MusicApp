@@ -1,6 +1,5 @@
 from django.db import models
 
-#TODO: Dodawanie piosenek itp z panelu admina Django
 
 # Create your models here.
 # python manage.py makemigrations main
