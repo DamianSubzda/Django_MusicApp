@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-# python manage.py makemigrations main
+# python manage.py makemigrations css
 # python manage.py migrate
 
 class Member(models.Model): #TODO

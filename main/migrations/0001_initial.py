@@ -49,16 +49,16 @@ class Migration(migrations.Migration):
             name='Song_Singer',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('IdSinger', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.singer')),
-                ('IdSong', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.song')),
+                ('IdSinger', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='css.singer')),
+                ('IdSong', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='css.song')),
             ],
         ),
         migrations.CreateModel(
             name='FavouriteSong',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('IdSong', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.song')),
-                ('IdUser', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.member')),
+                ('IdSong', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='css.song')),
+                ('IdUser', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='css.member')),
             ],
         ),
     ]
