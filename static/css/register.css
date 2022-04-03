@@ -1,0 +1,23 @@
+
+body{
+    background: aquamarine;
+}
+
+.register{
+    padding: 5%;
+    margin: 2% 15% 15%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    background: aqua;
+}
+form{
+    <!-- -->
+}
+.button-div{
+    margin-top: 5%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-bottom: 5%;
+}

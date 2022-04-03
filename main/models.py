@@ -27,7 +27,7 @@ class Song(models.Model):
     Mp3 = models.FileField() #FileFiled
 
     def __str__(self):
-        return str(self.IdSong + self.Title)
+        return str(self.IdSong) + self.Title
 
 class Singer(models.Model):
     IdSinger = models.AutoField(primary_key=True)
