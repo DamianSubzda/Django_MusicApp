@@ -1,15 +1,16 @@
 body{
     margin: 0%;
     background: rgb(33,4,41);
-    background: linear-gradient(180deg, rgba(33,4,41,1) 0%, rgba(22,2,27,1) 13%);
+    display: flex;
+    min-height: 100vh;
 }
 footer{
     background-image: url(../images/header-background.jpg);
     height: 300px;
     width: 100%;
-    position:relative;
-    bottom: 0px;
-    
+    bottom: 0;
+    margin-top: auto;
+
 }
 header{
     display: block;
@@ -60,7 +61,7 @@ header{
 
 .logo{
     padding-top: 2%;
-    background-color: none;
+    background-color: transparent;
     height: 90%;
     width: 90%;
     display: block;
@@ -78,12 +79,12 @@ header{
     transition: .5s ease;
   }
   
-  .profile:hover .overlay {
+.profile:hover .overlay {
     bottom: 0;
     height: 100%;
-  }
+}
   
-  .user {
+.user {
     white-space: nowrap; 
     color: white;
     font-size: 20px;
@@ -93,15 +94,20 @@ header{
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-  }
+}
 
-  .right-header{
+.right-header{
     position: absolute;
     margin-left: 50%;
     margin-top: 2%;
-  }
+}
 
-  .button-payU{
+.button-payU{
       height: 25px;
       width: 50px;
-  }
+}
+
+.button-password{
+      height: 25px;
+      width: 140px;
+}

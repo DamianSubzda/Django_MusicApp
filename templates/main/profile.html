@@ -7,28 +7,28 @@
     <title>TAI</title>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
 </head>
-
 <body>
     <header>
         <div class="header-top">
             <div class="profile">
                 <img class="logo" src="{% static '/images/profile-logo.png' %}">
                 <div class="overlay">
-                    <div class="user">User</div>
-                  </div>
+                    <div class="user">{{ user.get_username }}</div>
+                </div>
             </div>
             <div class="right-header">
                 <button class="button-payU" onclick="location.href = '/payU';">payU</button>
+                <button class="button-password" onclick="location.href = '/password';">Change password</button>
             </div>
-
         </div>
         <div class="header-bottom">
             <div class="profile-down">
             </div>
         </div>
     </header>
-    <br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.
-    <footer></footer>
-</body>
 
+    <footer>
+
+    </footer>
+</body>
 </html>
