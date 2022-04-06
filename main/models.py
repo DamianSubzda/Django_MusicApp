@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.contrib.auth.models import User
 
 # Create your models here.
 # python manage.py makemigrations css
@@ -22,9 +23,12 @@ class Member(models.Model):
         return str(self.Nick)
 '''
 
-#class CustomUser(AbstractUser):
-#    PremiumStatus = models.BooleanField(default=False)
+class Account(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    premiumStatus = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.user.username
 
 class Song(models.Model):
     IdSong = models.AutoField(primary_key=True)
