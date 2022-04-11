@@ -1,12 +1,9 @@
-from datetime import datetime
-
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from .forms import RegisterForm
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
-
 
 # Create your views here.
 
@@ -20,13 +17,8 @@ def register(response):
         form = RegisterForm()
     return render(response, "register/register.html", {"form": form})
 
-def login(response):
-    pass
-#https://stackoverflow.com/questions/15571046/django-force-password-expiration
-
 
 class PasswordsChangeView(PasswordChangeView):
-
     from_class = PasswordChangeForm
     success_url = reverse_lazy('profile')
 
