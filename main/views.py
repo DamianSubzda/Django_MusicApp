@@ -12,7 +12,7 @@ def home(response):
 
 
 def base(response):
-    return render(response, "main/base.html", {})
+    return render(response, "main/index.html", {})
 
 
 @login_required(login_url='/login')

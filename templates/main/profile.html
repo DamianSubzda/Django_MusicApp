@@ -1,34 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'main/index.html' %}
+{% block title %}
+    <p style="margin-left: 50%  ">{{ user.get_username }}</p>
+{% endblock %}
+{% block content %}
+    <div>
+        <p style="font-size: 40px">Here is going to be a list of actions...</p>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <title>TAI</title>
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css" />
-</head>
-<body>
-    <header>
-        <div class="header-top">
-            <div class="profile">
-                <img class="logo" src="{% static '/images/profile-logo.png' %}">
-                <div class="overlay">
-                    <div class="user">{{ user.get_username }}</div>
-                </div>
-            </div>
-            <div class="right-header">
-                <button class="button-payU" onclick="location.href = '/payU';">payU</button>
-                <button class="button-password" onclick="location.href = '/password_change';">Change password</button>
-            </div>
-        </div>
-        <div class="header-bottom">
-            <div class="profile-down">
-            </div>
-        </div>
-    </header>
+        <audio controls>
+            <source src="{% if item.Mp3 %}{{item.Mp3.url}} {% else %} Error {% endif %}" type="audio/mp3"/>
+        </audio>
 
-    <footer>
-
-    </footer>
-</body>
-</html>
+{% endblock %}
