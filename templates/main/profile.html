@@ -4,11 +4,12 @@
 {% endblock %}
 {% block content %}
     <div>
-        <p style="font-size: 40px">Here is going to be a list of actions...</p>
+        <p>Songs:</p>
+        {% for songs in song %}
+            <audio controls>
+                <p>{{ songs.Title }}<br/></p>
+                <source src="{{ songs.Mp3.url }}" type="audio/mp3"/>
+            </audio>
+        {% endfor %}
     </div>
-
-        <audio controls>
-            <source src="{% if item.Mp3 %}{{item.Mp3.url}} {% else %} Error {% endif %}" type="audio/mp3"/>
-        </audio>
-
 {% endblock %}

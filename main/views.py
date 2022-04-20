@@ -17,7 +17,8 @@ def base(response):
 
 @login_required(login_url='/login')
 def profile(response):
-    return render(response, "main/profile.html", {})
+    song = Song.objects.all()
+    return render(response, "main/profile.html", {"song": song})
 
 
 def test(response):

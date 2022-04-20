@@ -31,7 +31,7 @@ class Singer(models.Model):
     Pseudonym = models.CharField(max_length=100)
 
     def __str__(self):
-        return str(self.IdSinger + self.fName + self.sName)
+        return str(self.IdSinger) + self.fName + self.sName
 
 
 class FavouriteSong(models.Model):

@@ -38,7 +38,7 @@
             </li>
             <li class="navbar__btn">
                 {% if user.is_authenticated %}
-                    <div style="color: white">Welcom</br>{{ user.get_username }}!</div>
+                    <div style="color: white">Welcome</br>{{ user.get_username }}!</div>
                 {% else %}
                     <a href="/login" class="button">Sign in</a>
                 {% endif %}
