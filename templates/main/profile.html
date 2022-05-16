@@ -3,13 +3,12 @@
     <p style="margin-left: 50%  ">{{ user.get_username }}</p>
 {% endblock %}
 {% block content %}
-    <div>
-        <p>Songs:</p>
-        {% for songs in song %}
-            <audio controls>
-                <p>{{ songs.Title }}<br/></p>
-                <source src="{{ songs.Mp3.url }}" type="audio/mp3"/>
-            </audio>
-        {% endfor %}
-    </div>
+    <p>100zł</p>
+    <button>
+        Pay
+    </button>
+    <p>200zł</p>
+    <button>
+        Pay
+    </button>
 {% endblock %}

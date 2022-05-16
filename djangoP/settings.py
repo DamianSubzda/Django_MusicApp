@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
-    'django_password_history'
 ]
 
 MIDDLEWARE = [
@@ -142,5 +141,6 @@ LOGOUT_REDIRECT_URL = "/login"
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'emails'
+
 
 

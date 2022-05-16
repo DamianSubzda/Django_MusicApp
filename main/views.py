@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpResponse, request
 from .models import *
@@ -8,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(response):
-    return render(response, "main/home.html", {})
+    song = Song.objects.all()
+    return render(response, "main/home.html", {"song": song})
 
 
 def base(response):
@@ -20,10 +22,3 @@ def profile(response):
     song = Song.objects.all()
     return render(response, "main/profile.html", {"song": song})
 
-
-def test(response):
-    return HttpResponse("Hello world!")
-
-
-def payU(response):
-    return HttpResponse("Succes!")
