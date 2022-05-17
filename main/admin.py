@@ -18,5 +18,4 @@ admin.site.register(User, CustomizedUserAdmin)
 admin.site.register(Singer)
 admin.site.register(Song_Singer)
 admin.site.register(FavouriteSong)
-
 admin.site.register(Song)

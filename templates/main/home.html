@@ -9,10 +9,18 @@
             <div class="lp">Performer</div>
             <div class="lp">Time</div>
         </div>
+            <script>
+                let Title = []
+                let Mp3 = []
+            </script>
         <div class="songs" style="width: 100%">
             {% for songs in song %}
-                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%" onclick="openForm(this)">
-                    <p style="color: white" id="test">
+                <script>
+                    Title.push("{{ songs.Title }}")
+                    Mp3.push("{{ songs.Mp3 }}")
+                </script>
+                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%" onclick="openForm({{ forloop.counter }})">
+                    <p style="color: white">
                     <div class="label_songs">
                         <div class="lp" id = "lp-1">{{ forloop.counter }}</div>
                         <div class="lp">{{ songs.Title }} </div>
@@ -23,15 +31,16 @@
                 </div>
                     <div class="form-popup" id="myForm">
                         <form class="form-container">
-                            <label><b id="song_title"></b></label>
                             </br>
-                            <audio controls>
+                            <label id="test"><b>{{ songs.Title }}</b></label>
+                            </br>
+
+                            <audio id = "src_song_audio" controls preload="none">
                                 <source src="{{ songs.Mp3.url }}" type="audio/mp3"/>
                             </audio>
                             <button type="button" class="btn cancel" onclick="closeForm()">
                                 Close
                             </button>
-
                         </form>
                     </div>
             {% endfor %}

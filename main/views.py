@@ -14,7 +14,8 @@ def home(response):
 
 
 def base(response):
-    return render(response, "main/index.html", {})
+    song = Song.objects.all()
+    return render(response, "main/index.html", {"song": song})
 
 
 @login_required(login_url='/login')

@@ -33,6 +33,7 @@
   background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
   background-size: 100%;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   display: flex;
@@ -202,8 +203,8 @@
 }
 
 .main__container {
-  /*display: grid;
-  grid-template-columns: 1fr 1fr;*/
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-self: center;
   margin: 0 auto;
@@ -221,6 +222,7 @@
   background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
   background-size: 100%;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-texy-fill-color: transparent;
 }
@@ -231,6 +233,7 @@
   background-image: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
   background-size: 100%;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-texy-fill-color: transparent;
 }
@@ -293,10 +296,10 @@
 }
 
 /* Mobile Responsive */
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 768px) {
   .main__container {
-    /*display: grid;
-    grid-template-columns: auto;*/
+    display: grid;
+    grid-template-columns: auto;
     align-items: center;
     justify-self: center;
     width: 100%;
@@ -369,6 +372,7 @@
   );
   background-size: 100%;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   margin-bottom: 5rem;
@@ -386,13 +390,24 @@
   height: 525px;
   width: 400px;
   border-radius: 4px;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(17, 17, 17, 0.6) 100%
+    ),
+    url("/images/pic3.jpg");
   background-size: cover;
   position: relative;
   color: #fff;
 }
 
 .services__card:nth-child(2) {
-
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(17, 17, 17, 0.9) 100%
+    ),
+    url('/images/pic4.jpg');
 }
 
 .services__card h2 {
