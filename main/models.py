@@ -19,8 +19,9 @@ class Account(models.Model):
     def __str__(self):
         return self.user.username
 
-    def addTime(self, time):
-        self.timeSpendListening += time
+    def getName(self):
+        return str(self.user.username)
+
 
 
 class Song(models.Model):

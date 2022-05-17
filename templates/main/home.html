@@ -9,40 +9,69 @@
             <div class="lp">Performer</div>
             <div class="lp">Time</div>
         </div>
-            <script>
-                let Title = []
-                let Mp3 = []
-            </script>
+        <script>
+            let Title = []
+            let Mp3 = []
+        </script>
         <div class="songs" style="width: 100%">
             {% for songs in song %}
                 <script>
                     Title.push("{{ songs.Title }}")
                     Mp3.push("{{ songs.Mp3 }}")
                 </script>
-                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%" onclick="openForm({{ forloop.counter }})">
+                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%"
+                     onclick="openForm({{ forloop.counter }})">
                     <p style="color: white">
-                    <div class="label_songs">
-                        <div class="lp" id = "lp-1">{{ forloop.counter }}</div>
-                        <div class="lp">{{ songs.Title }} </div>
-                        <div class="lp">{{ songs.Performer }}</div>
-                        <div class="lp">{{ songs.getDuration }}</div>
-                    </div>
+                        <div class="label_songs">
+                            <div class="lp" id="lp-1">{{ forloop.counter }}</div>
+                            <div class="lp">{{ songs.Title }} </div>
+                            <div class="lp">{{ songs.Performer }}</div>
+                            <div class="lp">{{ songs.getDuration }}</div>
+                            <div class="lp-info">
+                                <label class="hovertext"
+                                       data-hover="Title: {{ songs.Title }} &#013; Performer: {{ songs.Performer }}&#013;Time: {{ songs.getDuration }}">
+                                    <b>INFO</b>
+                                </label>
+                            </div>
+                            <div class="lp-add">
+                                <p>
+                                    {% for accs in acc %}
+                                        {% if request.user.username == accs.getName %}
+                                            {% if accs.premiumStatus %}
+                                                <form>
+                                                  <div>
+                                                    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+                                                    <label for="subscribeNews">Add to favourite</label>
+                                                  </div>
+                                                </form>
+                                            {% else %}
+                                            {% endif %}
+                                        {% else %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
                     </p>
                 </div>
-                    <div class="form-popup" id="myForm">
-                        <form class="form-container">
-                            </br>
-                            <label id="test"><b>{{ songs.Title }}</b></label>
-                            </br>
+                <div class="form-popup" id="myForm">
+                    <form class="form-container">
+                        </br>
+                        <p id="song-title"><b>{{ songs.Title }}</b></p>
 
-                            <audio id = "src_song_audio" controls preload="none">
+                        <input type="checkbox" id="_checkbox">
+                        <label id="checkbox-label"for="_checkbox">
+                            <div id="tick_mark"></div>
+                        </label>
+
+                        <audio id = "src-song-audio" controls preload="none">
                                 <source src="{{ songs.Mp3.url }}" type="audio/mp3"/>
-                            </audio>
-                            <button type="button" class="btn cancel" onclick="closeForm()">
-                                Close
-                            </button>
-                        </form>
-                    </div>
+                        </audio>
+                        <button type="button" class="btn cancel" onclick="closeForm()">
+                            Close
+                        </button>
+                    </form>
+                </div>
             {% endfor %}
         </div>
     </div>
