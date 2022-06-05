@@ -14,7 +14,6 @@ from main.helpers import get_audio_length
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     premiumStatus = models.BooleanField(default=False)
-    #timeSpendListening = models.DecimalField(max_length=20, blank=True, max_digits=20, decimal_places=2)
 
     def __str__(self):
         return self.user.username
@@ -30,7 +29,8 @@ class Song(models.Model):
     Time = models.DecimalField(max_length=20, blank=True, max_digits=20, decimal_places=2)
     Performer = models.CharField(max_length=100)
     AddingDate = models.DateTimeField()
-    Mp3 = models.FileField(blank=True, null=True)
+    Mp3 = models.FileField(upload_to='music', blank=True, null=True)
+    Image = models.ImageField(upload_to='image', null=True, blank=True)
 
     def __str__(self):
         return str(self.IdSong) + " " + self.Title
