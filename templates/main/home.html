@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block content %}
+    <div class = "main__searcher">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Search music:</label>
+            <input type="text" name="searched">
+            <input type="submit" value="Search">
+        </form>
+    </div>
     <div class="main__holder" style="padding-top: 20px">
         <div class="label_songs" style="padding-bottom: 5px">
             <div class="lp">Lp.</div>

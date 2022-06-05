@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def home(response):
-    song = Song.objects.all()
+    searched = response.POST.get('searched', "")
+    song = Song.objects.filter(Title__contains=searched)
     user = Account.objects.all()
     return render(response, "main/home.html", {"song": song, "acc": user})
 
