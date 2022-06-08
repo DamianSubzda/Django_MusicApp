@@ -1,24 +1,34 @@
-{% load static %}
-{% load crispy_forms_tags %}
+{% load static %} {% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/register.css' %}" type="text/css" />
-</head>
-<body>
-    <div class="register-login">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/register.css' %}"
+      type="text/css"
+    />
+
+  </head>
+  <body>
+    <div class="container" id="log">
+      <div class="register-login">
         <form method="post" class="form-group">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <p>Don't have an account? Create one <a href="/register">here</a></p>
-            <p>Don't remember a password? Remind it <a href="/password_reset">here</a></p>
-            <div class="button-div">
-                <button type="submit" class = "btn btn-success">Sign in</button>
-            </div>
+          {% csrf_token %} {{ form|crispy }}
+          <p>Don't have an account? Create one <a href="/register">here</a></p>
+          <p>
+            Don't remember a password? Remind it
+            <a href="/password_reset">here</a>
+          </p>
+          <div class="button-div">
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </div>
         </form>
+      </div>
     </div>
-</body>
+  </body>
 </html>

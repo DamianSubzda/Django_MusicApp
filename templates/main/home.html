@@ -1,3 +1,110 @@
 {% extends 'main/index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="main__searcher">
+        <form class="search__form" method="POST">
+            {% csrf_token %}
+            <label class="search__label" for="search">Search for stuff</label>
+            <input class="search__input" placeholder="Search..." autofocus required />
+            <button class="search__button" type="submit">Go</button>
+        </form>
+    </div>
+    <div class="main__holder" style="padding-top: 20px">
+        <div class="label_songs" style="padding-bottom: 5px">
+            <div class="lp">Lp.</div>
+            <div class="lp">Title</div>
+            <div class="lp">Performer</div>
+            <div class="lp">Time</div>
+        </div>
+        <script>
+            let Title = []
+            let Mp3 = []
+        </script>
+        <div class="songs" style="width: 100%">
+            {% for songs in song %}
+                <script>
+                    Title.push("{{ songs.Title }}")
+                    Mp3.push("{{ songs.Mp3 }}")
+                </script>
+                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%"
+                     onclick="openForm({{ forloop.counter }})">
+                    <p style="color: white">
+                    <div class="label_songs">
+                        <div class="lp" id="lp-1">{{ forloop.counter }}</div>
+                        <div class="lp">{{ songs.Title }} </div>
+                        <div class="lp">{{ songs.Performer }}</div>
+                        <div class="lp">{{ songs.getDuration }}</div>
+                        <div class="lp-info">
+                            <label class="hovertext"
+                                   data-hover="Title: {{ songs.Title }} &#013; Performer: {{ songs.Performer }}&#013;Time: {{ songs.getDuration }}">
+                                INFO
+                            </label>
+                        </div>
+                        <div class="lp-add">
+                            <p>
+                                {% for accs in acc %}
+                                    {% if request.user.username == accs.getName %}
+                                        {% if accs.premiumStatus %}
+                                            <form>
+                                                <div>
+                                                    <input type="checkbox" id="subscribeNews" name="subscribe"
+                                                           value="newsletter">
+                                                    <label for="subscribeNews">Add to favourite</label>
+                                                </div>
+                                            </form>
+                                        {% else %}
+                                        {% endif %}
+                                    {% else %}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+                <div class="form-popup" id="myForm">
+                    <form class="form-container">
+                        <div style="width: 50px; height: 50px;"></div>
+                        <button type="button" class="btn-close" onclick="closeForm()">
+                          <span class="icon-cross"></span>
+                        </button>
+                            <div class="audio-player">
+                            <div class="timeline">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="controls">
+                                <div class="play-container">
+                                    <div class="icono-play">
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="current">0:00</div>
+                                    <div class="divider">/</div>
+                                    <div class="length"></div>
+                                </div>
+                                <div class="name" id="song-title">{{ songs.Title }}</div>
+                                <!--     credit for icon to https://saeedalipoor.github.io/icono/ -->
+                                <div class="volume-container">
+                                    <div class="volume-button">
+                                        <div class="volume icono-volumeMedium"></div>
+                                    </div>
+
+                                    <div class="volume-slider">
+                                        <div class="volume-percentage"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+{#                        <button type="button" class="btn cancel" onclick="closeForm()">#}
+{#                            Close#}
+{#                        </button>#}
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
 
 

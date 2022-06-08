@@ -203,7 +203,7 @@
 }
 
 .main__container {
-  display: grid;
+  /*display: grid;*/
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-self: center;
@@ -296,10 +296,10 @@
 }
 
 /* Mobile Responsive */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .main__container {
-    display: grid;
-    grid-template-columns: auto;
+    /*display: none;
+    grid-template-columns: auto;*/
     align-items: center;
     justify-self: center;
     width: 100%;
@@ -390,24 +390,13 @@
   height: 525px;
   width: 400px;
   border-radius: 4px;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(17, 17, 17, 0.6) 100%
-    ),
-    url("/images/pic3.jpg");
   background-size: cover;
   position: relative;
   color: #fff;
 }
 
 .services__card:nth-child(2) {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(17, 17, 17, 0.9) 100%
-    ),
-    url('/images/pic4.jpg');
+
 }
 
 .services__card h2 {
@@ -599,3 +588,501 @@
     width: 100%;
   }
 }
+
+.box {
+  box-shadow:none;
+}
+.box:hover, .box:active {
+  box-shadow: inset 0 0 10px #363333;
+}
+
+/*POP UP*/
+
+.form-popup {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%); /* Firefox */
+  -ms-transform: translate(-50%, -50%);  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Safari and Chrome*/
+  -o-transform: translate(-50%, -50%); /* Opera */
+  transform: translate(-50%, -50%);
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 500px;
+  height: 200px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #E0E0E0;
+  background-image: linear-gradient(
+    to right,
+    #D0D0D0 0%,
+    #B0B0B0 0%,
+    #909090 21%,
+    #707070 52%,
+    #505050 78%,
+    #303030 100%
+  );
+  background-size: 100%;
+}
+
+#song-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.label_songs {
+  display: grid;
+  grid-template-columns: 5% 40% 35% 20%;
+  grid-column-gap: 0px;
+  width: 100%;
+  color: white;
+}
+
+
+audio {
+  /*border-radius: 90px;*/
+  width: 100%;
+  height: 45px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+audio::-webkit-media-controls-mute-button {
+display: none !important;
+}
+
+audio::-webkit-media-controls-panel {
+background-color: #ff8177;
+  background-image: linear-gradient(
+    to right,
+    #ff8177 0%,
+    #ff867a 0%,
+    #ff8c7f 21%,
+    #f99185 52%,
+    #cf556c 78%,
+    #b12a5b 100%
+  );
+  background-size: 100%;
+}
+
+.lp{
+  text-align: left;
+}
+
+.lp-info{
+  widht: 100%;
+}
+.lp-add{
+  float: right;
+}
+
+.hovertext {
+  position: absolute;
+  display: flex;
+  z-index: 1;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  background-color: yellow;
+  color: red;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 999;
+
+  position: absolute;
+  left: 0;
+  top: 110%;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+  z-index: 999;
+}
+
+/*CUSTOM CHECKBOX*/
+
+#_checkbox {
+  display: none;
+  position: relative;
+}
+
+#checkbox-label {
+  position: absolute;
+  top: 15%;
+  right: 0;
+  left: 80%;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background-color: #f72414;
+  transform: translateY(-30%);
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px #ffbeb8;
+  cursor: pointer;
+  transition: 0.2s ease transform, 0.2s ease background-color,
+    0.2s ease box-shadow;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#checkbox-label:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  width: 21px;
+  height: 21px;
+  margin: 0 auto;
+  background-color: #fff;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 5px #ffbeb8;
+  transition: 0.2s ease width, 0.2s ease height;
+}
+
+#checkbox-label:hover:before {
+  width: 16px;
+  height: 16px;
+  box-shadow: inset 1px 1px 5px #ff9d96;
+}
+
+#checkbox-label:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+#tick_mark {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  margin-left: 14px;
+  transform: rotateZ(-40deg);
+}
+
+#tick_mark:before,
+#tick_mark:after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  border-radius: 2px;
+  opacity: 0;
+  transition: 0.2s ease transform, 0.2s ease opacity;
+}
+
+#tick_mark:before {
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  height: 10px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);
+  transform: translateY(-68px);
+}
+
+#tick_mark:after {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);
+  transform: translateX(0px);
+}
+
+#_checkbox:checked + label {
+  background-color: #07d410;
+  box-shadow: 1px 1px 5px #92ff97;
+}
+
+#_checkbox:checked + label:before {
+  width: 0;
+  height: 0;
+}
+
+#_checkbox:checked + label #tick_mark:before,
+#_checkbox:checked + label #tick_mark:after {
+  transform: translate(-7px, -2px);
+  opacity: 1;
+}
+
+/*
+  AUDIO CUSTOM
+ */
+
+.audio-player {
+  height: 50px;
+  width: 350px;
+  background: #444;
+  box-shadow: 0 0 20px 0 #000 a;
+  font-family: arial;
+  color: white;
+  font-size: 0.75em;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 6px auto;
+}
+.audio-player .timeline {
+  background: white;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 10px 0 #000 8;
+}
+.audio-player .timeline .progress {
+  background: coral;
+  width: 0%;
+  height: 100%;
+  transition: 0.25s;
+}
+.audio-player .controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0 20px;
+}
+.audio-player .controls > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.audio-player .controls .icono-play.play {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  height: 0;
+  width: 0;
+  border: 7px solid #000 0;
+  border-left: 13px solid white;
+}
+.audio-player .controls .icono-play.play:hover {
+  transform: scale(1.1);
+}
+.audio-player .controls .icono-play.pause {
+  height: 15px;
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+}
+.audio-player .controls .icono-play.pause:before {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background: white;
+  content: "";
+  height: 15px;
+  width: 3px;
+}
+.audio-player .controls .icono-play.pause:after {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  background: white;
+  content: "";
+  height: 15px;
+  width: 3px;
+}
+.audio-player .controls .icono-play.pause:hover {
+  transform: scale(1.1);
+}
+.audio-player .controls .time {
+  display: flex;
+}
+.audio-player .controls .time > * {
+  padding: 2px;
+}
+.audio-player .controls .volume-container {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+.audio-player .controls .volume-container .volume-button {
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+.audio-player .controls .volume-container .volume-button .volume {
+  transform: scale(0.7);
+}
+.audio-player .controls .volume-container .volume-slider {
+  position: absolute;
+  left: -3px;
+  top: 15px;
+  z-index: -1;
+  width: 0;
+  height: 15px;
+  background: white;
+  box-shadow: 0 0 20px #000 a;
+  transition: 0.25s;
+}
+.audio-player .controls .volume-container .volume-slider .volume-percentage {
+  background: coral;
+  height: 100%;
+  width: 75%;
+}
+.audio-player .controls .volume-container:hover .volume-slider {
+  left: -123px;
+  width: 120px;
+}
+
+.search__label {
+  display: flex;
+  width: 100%;
+  color: white;
+}
+
+:root {
+	 --rad: 0.7rem;
+	 --dur: 0.3s;
+	 --color-dark: #2f2f2f;
+	 --color-light: #fff;
+	 --color-brand: gray;
+	 --font-fam: 'Lato', sans-serif;
+	 --height: 5rem;
+	 --btn-width: 6rem;
+	 --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+.search__form {
+	 position: relative;
+	 width: 30rem;
+	 background: var(--color-brand);
+	 border-radius: var(--rad);
+}
+.search__input {
+	 height: 5rem;
+	 font-family: var(--font-fam);
+	 border: 0;
+	 color: var(--color-dark);
+	 font-size: 1.8rem;
+     outline: 0;
+	 width: 100%;
+	 background: var(--color-light);
+	 padding: 0 1.6rem;
+	 border-radius: var(--rad);
+	 appearance: none;
+	 transition: all var(--dur) var(--bez);
+	 transition-property: width, border-radius;
+	 z-index: 1;
+	 position: relative;
+
+}
+
+.search__button {
+     height: var(--height);
+	 font-family: var(--font-fam);
+	 border: 0;
+	 color: var(--color-dark);
+	 font-size: 1.8rem;
+	 display: none;
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 width: var(--btn-width);
+	 font-weight: bold;
+	 background: var(--color-brand);
+	 border-radius: 0 var(--rad) var(--rad) 0;
+}
+.search__input:not(:placeholder-shown) {
+	 border-radius: var(--rad) 0 0 var(--rad);
+	 width: calc(100% - var(--btn-width));
+}
+.search__input:not(:placeholder-shown) + .search__button {
+	 display: block;
+}
+.search__label {
+	 position: absolute;
+	 clip: rect(1px, 1px, 1px, 1px);
+	 padding: 0;
+	 border: 0;
+	 height: 1px;
+	 width: 1px;
+	 overflow: hidden;
+}
+
+.btn-close {
+	 margin: 0;
+	 border: 0;
+	 padding: 0;
+	 background: gray;
+	 border-radius: 50%;
+	 width: 40px;
+	 height: 40px;
+	 display: flex;
+	 flex-flow: column nowrap;
+	 justify-content: center;
+	 align-items: center;
+	 cursor: pointer;
+	 transition: all 150ms;
+}
+ .btn-close .icon-cross {
+	 margin: 0;
+	 padding: 0;
+	 border: 0;
+	 background: none;
+	 position: relative;
+	 width: 20px;
+	 height: 20px;
+}
+ .btn-close .icon-cross:before, .btn-close .icon-cross:after {
+	 content: '';
+	 position: absolute;
+	 top: 7px;
+	 left: 0;
+	 right: 0;
+	 height: 6px;
+	 background: #fff;
+	 border-radius: 6px;
+}
+ .btn-close .icon-cross:before {
+	 transform: rotate(45deg);
+}
+ .btn-close .icon-cross:after {
+	 transform: rotate(-45deg);
+}
+ .btn-close .icon-cross span {
+	 display: block;
+}
+ .btn-close:hover, .btn-close:focus {
+	 transform: rotateZ(180deg);
+	 background: red;
+}
+
