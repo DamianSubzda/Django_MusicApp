@@ -26,3 +26,4 @@ def base(response):
 def profile(response):
     song = Song.objects.all()
     return render(response, "main/profile.html", {"song": song})
+
