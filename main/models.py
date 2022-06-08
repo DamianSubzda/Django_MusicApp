@@ -22,6 +22,13 @@ class Account(models.Model):
         return str(self.user.username)
 
 
+class Friend(models.Model):
+    idUSer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+                               related_name="friendship_creator_set")
+    friend = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+                               related_name="friend_set", default=0)
+
+
 
 class Song(models.Model):
     IdSong = models.AutoField(primary_key=True, null=False, blank=False)
@@ -59,7 +66,7 @@ class Singer(models.Model):
     pseudonym = models.CharField(max_length=100, null=False, blank=False)
 
     def __str__(self):
-        return str(self.IdSinger) + " " + self.fName + " " + self.sName
+        return str(self.idSinger) + " " + self.fName + " " + self.sName
 
 
 class PlayList(models.Model):
@@ -69,4 +76,3 @@ class PlayList(models.Model):
 
     def __str__(self):
         return self.title
-
