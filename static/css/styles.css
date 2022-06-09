@@ -1082,7 +1082,7 @@ background-color: #ff8177;
 	 display: block;
 }
  .btn-close:hover, .btn-close:focus {
-	 transform: rotateZ(180deg);
+	 transform: rotateZ(90deg);
 	 background: red;
 }
 

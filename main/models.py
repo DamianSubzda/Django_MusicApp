@@ -33,7 +33,7 @@ class Friend(models.Model):
 class Song(models.Model):
     IdSong = models.AutoField(primary_key=True, null=False, blank=False)
     Title = models.CharField(max_length=101, null=False, blank=False)
-    Time = models.DecimalField(max_length=20, null=False, blank=False, max_digits=20, decimal_places=2)
+    Time = models.DecimalField(max_length=20, blank=True, max_digits=20, decimal_places=2)
     Performer = models.CharField(max_length=100)
     AddingDate = models.DateTimeField(null=False, blank=False)
     Mp3 = models.FileField(upload_to='music', null=False, blank=False)
