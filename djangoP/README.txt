@@ -1,8 +1,12 @@
-SANDBOX:
-DamianSubzda@wp.pl
+Test Card:
+
+Card Type: Visa
+Card: 4012 0010 3714 1112
+CVV: 123
+Name: Test
+Expiry: 05/20
+OTP:123456
+
+
+damiansubzda1@gmail.com
 Wat12345!
-
-YT: https://www.youtube.com/watch?v=fiNAlpU3zkA&ab_channel=PyConPL
-
-django-getpaid:
-pip install -e git+https://github.com/cypreess/django-getpaid.git#egg=django-getpaid

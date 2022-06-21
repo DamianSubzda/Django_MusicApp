@@ -28,12 +28,13 @@ class Friend(models.Model):
     friend = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
                                related_name="friend_set", default=0)
 
+# https://medium.com/analytics-vidhya/add-friends-with-689a2fa4e41d
 
 
 class Song(models.Model):
     IdSong = models.AutoField(primary_key=True, null=False, blank=False)
     Title = models.CharField(max_length=101, null=False, blank=False)
-    Time = models.DecimalField(max_length=20, null=False, blank=False, max_digits=20, decimal_places=2)
+    Time = models.DecimalField(max_length=20, blank=True, max_digits=20, decimal_places=2)
     Performer = models.CharField(max_length=100)
     AddingDate = models.DateTimeField(null=False, blank=False)
     Mp3 = models.FileField(upload_to='music', null=False, blank=False)

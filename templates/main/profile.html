@@ -3,6 +3,16 @@
     <p style="margin-left: 50%  ">{{ user.get_username }}</p>
 {% endblock %}
 {% block content %}
+
+    <p>Create playlist:</p>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ PlayListForm }}
+
+        <input type="submit" name="Submit">
+    </form>
+
+
     <p>100zł</p>
     <button>
         Pay

@@ -1,11 +1,11 @@
 from django.urls import path
 
 from . import views
-
 from django.urls import path
 from django.conf import settings
 
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('home/', views.home, name="home"),
