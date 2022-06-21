@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="main__searcher">
+    <div class="main__searcher" style =" padding-top: 2%">
         <form class="search__form" method="POST">
             {% csrf_token %}
             <label class="search__label" for="search">Search for stuff</label>
@@ -21,12 +21,14 @@
         <script>
             let Title = []
             let Mp3 = []
+            let Image = []
         </script>
         <div class="songs" style="width: 100%">
             {% for songs in song %}
                 <script>
                     Title.push("{{ songs.Title }}")
                     Mp3.push("{{ songs.Mp3 }}")
+                    Image.push("{{ songs.Image.url }}")
                 </script>
                 <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%"
                      onclick="openForm({{ forloop.counter }})">
@@ -36,40 +38,43 @@
                         <div class="lp">{{ songs.Title }} </div>
                         <div class="lp">{{ songs.Performer }}</div>
                         <div class="lp">{{ songs.getDuration }}</div>
-                        <div class="lp-info">
-                            <label class="hovertext"
-                                   data-hover="Title: {{ songs.Title }} &#013; Performer: {{ songs.Performer }}&#013;Time: {{ songs.getDuration }}">
+                        <div class="lp">
+                            <p class="hovertext" data-hover="Title: {{ songs.Title }} &#013; Performer: {{ songs.Performer }}&#013;Time: {{ songs.getDuration }}">
                                 INFO
-                            </label>
-                        </div>
-                        <div class="lp-add">
-                            <p>
-                                {% for accs in acc %}
-                                    {% if request.user.username == accs.getName %}
-                                        {% if accs.premiumStatus %}
-                                            <form>
-                                                <div>
-                                                    <input type="checkbox" id="subscribeNews" name="subscribe"
-                                                           value="newsletter">
-                                                    <label for="subscribeNews">Add to favourite</label>
-                                                </div>
-                                            </form>
-                                        {% else %}
-                                        {% endif %}
-                                    {% else %}
-                                    {% endif %}
-                                {% endfor %}
                             </p>
                         </div>
+{#                        <div class="lp-add">#}
+{#                            <p>#}
+{#                                {% for accs in acc %}#}
+{#                                    {% if request.user.username == accs.getName %}#}
+{#                                        {% if accs.premiumStatus %}#}
+{#                                            <form>#}
+{#                                                <div>#}
+{#                                                    <input type="checkbox" id="subscribeNews" name="subscribe"#}
+{#                                                           value="newsletter">#}
+{#                                                    <label for="subscribeNews">Add to favourite</label>#}
+{#                                                </div>#}
+{#                                            </form>#}
+{#                                        {% else %}#}
+{#                                        {% endif %}#}
+{#                                    {% else %}#}
+{#                                    {% endif %}#}
+{#                                {% endfor %}#}
+{#                            </p>#}
+{#                        </div>#}
                     </div>
                     </p>
                 </div>
                 <div class="form-popup" id="myForm">
-                    <form class="form-container">
-                        <div style="width: 50px; height: 50px;"></div>
-                        <button type="button" class="btn-close" onclick="closeForm()">
-                          <span class="icon-cross"></span>
-                        </button>
+                    <form class="form-container" id ="logo-background" style ="background-image: url({{ songs.Image.url }});">
+                        <div class="close-container">
+                            <button style="float: right;" type="button" class="btn-close" onclick="closeForm()">
+                              <span class="icon-cross"></span>
+                            </button>
+                        </div>
+                        <div class="download-container">
+{#                            <button><a href="">DOWNLOAD</a></button>#}
+                        </div>
                             <div class="audio-player">
                             <div class="timeline">
                                 <div class="progress"></div>
@@ -85,7 +90,6 @@
                                     <div class="length"></div>
                                 </div>
                                 <div class="name" id="song-title">{{ songs.Title }}</div>
-                                <!--     credit for icon to https://saeedalipoor.github.io/icono/ -->
                                 <div class="volume-container">
                                     <div class="volume-button">
                                         <div class="volume icono-volumeMedium"></div>

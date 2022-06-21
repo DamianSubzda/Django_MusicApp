@@ -5,9 +5,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.contrib.auth.models import User
-
-from mutagen.mp3 import MP3
-
 from main.helpers import get_audio_length
 
 
@@ -30,12 +27,28 @@ class Friend(models.Model):
 
 # https://medium.com/analytics-vidhya/add-friends-with-689a2fa4e41d
 
+class Singer(models.Model):
+    idSinger = models.AutoField(primary_key=True, null=False, blank=False)
+    fName = models.CharField(max_length=100, null=False, blank=False)
+    sName = models.CharField(max_length=100, null=False, blank=False)
+    pseudonym = models.CharField(max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return str(self.idSinger) + " " + self.fName + " " + self.sName
+
+class Team(models.Model):
+    Name = models.CharField(primary_key=True, max_length=100, null=False, blank=False)
+    singers = models.ManyToManyField(Singer)
+
+    def __str__(self):
+        return self.Name
+
 
 class Song(models.Model):
     IdSong = models.AutoField(primary_key=True, null=False, blank=False)
     Title = models.CharField(max_length=101, null=False, blank=False)
     Time = models.DecimalField(max_length=20, blank=True, max_digits=20, decimal_places=2)
-    Performer = models.CharField(max_length=100)
+    Team = models.ForeignKey("Team", on_delete=models.CASCADE, null=False, blank=False)
     AddingDate = models.DateTimeField(null=False, blank=False)
     Mp3 = models.FileField(upload_to='music', null=False, blank=False)
     Image = models.ImageField(upload_to='image', null=True, blank=True)
@@ -58,16 +71,6 @@ class Song(models.Model):
         if hours != 0:
             return "%02i:%02i:%02i" % (hours, minutes, seconds)
         return "%02i:%02i" % (minutes, seconds)
-
-
-class Singer(models.Model):
-    idSinger = models.AutoField(primary_key=True, null=False, blank=False)
-    fName = models.CharField(max_length=100, null=False, blank=False)
-    sName = models.CharField(max_length=100, null=False, blank=False)
-    pseudonym = models.CharField(max_length=100, null=False, blank=False)
-
-    def __str__(self):
-        return str(self.idSinger) + " " + self.fName + " " + self.sName
 
 
 class PlayList(models.Model):

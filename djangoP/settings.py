@@ -149,7 +149,7 @@ EMAIL_FILE_PATH = BASE_DIR / 'emails'
 PAYU_CONFIG = {
     "merchant_key": "3o6jgxhp",
     "merchant_salt": "67bAgZX1B3",
-    "mode": "test",
+    "mode": "TEST",
     "success_url": "http://127.0.0.1:8000/payu/success",
     "failure_url": "http://127.0.0.1:8000/payu/failure"
 }
