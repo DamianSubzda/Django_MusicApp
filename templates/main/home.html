@@ -38,7 +38,7 @@
                         <div class="lp">{{ songs.Team }}</div>
                         <div class="lp">{{ songs.getDuration }}</div>
                         <div class="lp">
-                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team: {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
+                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team:w {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
                                 INFO
                             </p>
                         </div>
