@@ -702,7 +702,7 @@ background-color: #ff8177;
   display: flex;
   padding: 2px;
   border: 1px solid white;
-  transform: translate(-1px, -2px);
+  /*transform: translate(-1px, -2px);*/
 }
 
 .hovertext:before {
@@ -717,7 +717,6 @@ background-color: #ff8177;
   padding: 5px 0;
   transition: opacity 1s ease-in-out;
   z-index: 999;
-
   position: absolute;
   left: 0;
   top: 110%;
@@ -726,7 +725,7 @@ background-color: #ff8177;
 .hovertext:hover:before {
   opacity: 1;
   visibility: visible;
-  z-index: 999;
+  /*z-index: 1;*/
 }
 
 /*CUSTOM CHECKBOX*/
@@ -971,7 +970,7 @@ background-color: #ff8177;
 	 --color-light: #fff;
 	 --color-brand: gray;
 	 --font-fam: 'Lato', sans-serif;
-	 --height: 4rem;
+	 --height: 3rem;
 	 --btn-width: 6rem;
 	 --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
@@ -983,7 +982,7 @@ background-color: #ff8177;
 	 border-radius: var(--rad);
 }
 .search__input {
-	 height: 4rem;
+	 height: 3rem;
 	 font-family: var(--font-fam);
 	 border: 0;
 	 color: var(--color-dark);
@@ -1006,7 +1005,7 @@ background-color: #ff8177;
 	 font-family: var(--font-fam);
 	 border: 0;
 	 color: var(--color-dark);
-	 font-size: 1.8rem;
+	 font-size: 1.1rem;
 	 display: none;
 	 position: absolute;
 	 top: 0;

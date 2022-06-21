@@ -1,7 +1,8 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
 from django.contrib.auth.decorators import login_required
-from register.forms import PlayListForm
+from main.forms import PlayListForm
 
 
 # Create your views here.
@@ -10,6 +11,13 @@ from register.forms import PlayListForm
 def home(response):
     searched = response.POST.get('searched', "")
     song = Song.objects.filter(Title__contains=searched)
+    user = Account.objects.all()
+    return render(response, "main/home.html", {"song": song, "acc": user})
+
+@login_required(login_url='/login')
+def search_playlist(response, playlist):
+    instance = PlayList.objects.filter(id=playlist)
+    song = instance[0].songs.all()
     user = Account.objects.all()
     return render(response, "main/home.html", {"song": song, "acc": user})
 
@@ -29,6 +37,19 @@ def profile(response):
         form.instance.idUser = user
         if form.is_valid():
             form.save()
+            return HttpResponseRedirect("/profile")
+    playList = PlayList.objects.filter(idUser=response.user)
+    return render(response, "main/profile.html", {"PlayListForm": form, "playList": playList})
 
-    return render(response, "main/profile.html", {"PlayListForm": form})
 
+@login_required(login_url='/login')
+def delete_playlist(request, id):
+    instance = PlayList.objects.filter(id=id)
+    instance.delete()
+    return HttpResponseRedirect("/profile")
+
+@login_required(login_url='/login')
+def delete_song(request, id, song):
+    instance = PlayList.objects.filter(id=id)
+    instance[0].songs.remove(song)
+    return HttpResponseRedirect("/profile")

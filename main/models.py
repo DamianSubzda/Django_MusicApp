@@ -54,7 +54,7 @@ class Song(models.Model):
     Image = models.ImageField(upload_to='image', null=True, blank=True)
 
     def __str__(self):
-        return str(self.IdSong) + " " + self.Title
+        return self.Title
 
     def save(self, *args, **kwargs):
         if not self.Time:

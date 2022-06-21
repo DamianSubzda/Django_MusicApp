@@ -8,14 +8,13 @@
             <label class="search__label" for="search">Search for stuff</label>
             <input name="searched" class="search__input" placeholder="Search..." autofocus required />
             <input class="search__button" type="submit" value="Search">
-{#            <button class="search__button" type="submit">Go</button>#}
         </form>
     </div>
     <div class="main__holder" style="padding-top: 20px">
         <div class="label_songs" style="padding-bottom: 5px">
             <div class="lp">Lp.</div>
             <div class="lp">Title</div>
-            <div class="lp">Performer</div>
+            <div class="lp">Team</div>
             <div class="lp">Time</div>
         </div>
         <script>
@@ -36,32 +35,13 @@
                     <div class="label_songs">
                         <div class="lp" id="lp-1">{{ forloop.counter }}</div>
                         <div class="lp">{{ songs.Title }} </div>
-                        <div class="lp">{{ songs.Performer }}</div>
+                        <div class="lp">{{ songs.Team }}</div>
                         <div class="lp">{{ songs.getDuration }}</div>
                         <div class="lp">
-                            <p class="hovertext" data-hover="Title: {{ songs.Title }} &#013; Performer: {{ songs.Performer }}&#013;Time: {{ songs.getDuration }}">
+                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team: {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
                                 INFO
                             </p>
                         </div>
-{#                        <div class="lp-add">#}
-{#                            <p>#}
-{#                                {% for accs in acc %}#}
-{#                                    {% if request.user.username == accs.getName %}#}
-{#                                        {% if accs.premiumStatus %}#}
-{#                                            <form>#}
-{#                                                <div>#}
-{#                                                    <input type="checkbox" id="subscribeNews" name="subscribe"#}
-{#                                                           value="newsletter">#}
-{#                                                    <label for="subscribeNews">Add to favourite</label>#}
-{#                                                </div>#}
-{#                                            </form>#}
-{#                                        {% else %}#}
-{#                                        {% endif %}#}
-{#                                    {% else %}#}
-{#                                    {% endif %}#}
-{#                                {% endfor %}#}
-{#                            </p>#}
-{#                        </div>#}
                     </div>
                     </p>
                 </div>
@@ -101,10 +81,6 @@
                                 </div>
                             </div>
                         </div>
-
-{#                        <button type="button" class="btn cancel" onclick="closeForm()">#}
-{#                            Close#}
-{#                        </button>#}
                     </form>
                 </div>
             {% endfor %}
