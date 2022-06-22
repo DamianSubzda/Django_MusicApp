@@ -6,21 +6,19 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Spotify v2</title>
+    <title>D&D Music</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
-    <link
-            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
-            rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <!-- navbar section -->
 <nav class="navbar">
     <div class="navbar__container">
-        <a href="/home" id="navbar__logo">SPOTIFY v2</a>
+        <a href="/home" id="navbar__logo">D&D MUSIC</a>
         <div class="navbar__toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -36,6 +34,11 @@
                 {% else %}
                     <a href="/login" class="navbar__links">Profile</a>
                 {% endif %}
+            </li>
+            <li class="navbar__btn">
+                <a href="/logout" class="logout_btn">
+                    <span class="logout_span">Logout</span>
+                </a>
             </li>
             <li class="navbar__btn">
                 {% if user.is_authenticated %}
@@ -57,111 +60,27 @@
     </div>
 </div>
 
-<!-- Services section -->
-<div class="services">
-    <h1>See what the hype is about</h1>
-    <div class="services__container">
-        <div class="services__card">
-            <h2>Expirience Bliss</h2>
-            <p>AI Powered Technology</p>
-            <button>Get started</button>
-        </div>
-        <div class="services__card">
-            <h2>Are you ready?</h2>
-            <p>Take the lip</p>
-            <button>Get started</button>
-        </div>
-    </div>
-</div>
+
 <!-- Footer Section -->
 <div class="footer__container">
     <div class="footer__links">
         <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-                <h2>About us</h2>
-                <a href="/">How it works</a>
-                <a href="/">Testemonials</a>
-                <a href="/">Careers</a>
-                <a href="/">Investments</a>
-                <a href="/">Terms of service</a>
-            </div>
-            <div class="footer__link--items">
-                <h2>Contact Us</h2>
-                <a href="/">Contact</a>
-                <a href="/">Support</a>
-                <a href="/">Destinations</a>
-                <a href="/">Sponsorships</a>
-            </div>
-        </div>
-        <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-                <h2>Videos</h2>
-                <a href="/">Submit Video</a>
-                <a href="/">Ambassadors</a>
-                <a href="/">Agency</a>
-                <a href="/">Influencer</a>
-            </div>
-            <div class="footer__link--items">
-                <h2>Social Media</h2>
-                <a href="/">Instagram</a>
-                <a href="/">Facebook</a>
-                <a href="/">Youtube</a>
-                <a href="/">Twitter</a>
-            </div>
+
         </div>
     </div>
     <div class="social__media">
         <div class="social__media--wrap">
             <div class="footer__logo">
-                <a href="/" id="footer__logo"><i class="fas fa-gem">NEXT</i></a>
+                <a href="/" id="footer__logo"><i class="fas fa-gem">D&D</i></a>
             </div>
-            <p class="website__rights">© NEXT 2022. All rights reserved</p>
-            <div class="social__icons">
-                <a
-                        class="social__icon--link"
-                        href="/"
-                        target="_blank"
-                        aria-label="Facebook"
-                >
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a
-                        class="social__icon--link"
-                        href="/"
-                        target="_blank"
-                        aria-label="Instagram"
-                >
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a
-                        class="social__icon--link"
-                        href="//www.youtube.com"
-                        target="_blank"
-                        aria-label="Youtube"
-                >
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a
-                        class="social__icon--link"
-                        href="/"
-                        target="_blank"
-                        aria-label="Twitter"
-                >
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a
-                        class="social__icon--link"
-                        href="/"
-                        target="_blank"
-                        aria-label="LinkedIn"
-                >
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
+            <p class="website__rights">© D&D 2022. All rights reserved Wykonał Dominik Gąsecki i Damian Subzda</p>
+
         </div>
     </div>
 </div>
 <script src="{% static 'js/app.js' %}"></script>
 <script src="{% static 'js/popup.js' %}"></script>
+<script src="{% static 'js/collapsible.js' %}"></script>
+<script src="{% static 'js/selectInput.js' %}"></script>
 </body>
 </html>

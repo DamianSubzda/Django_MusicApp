@@ -476,45 +476,6 @@
   font-size: 2rem;
 }
 
-.footer__links {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
-  justify-content: center;
-}
-
-.footer__link--wrapper {
-  display: flex;
-}
-
-.footer__link--items {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 16px;
-  text-align: left;
-  width: 160px;
-  box-sizing: border-box;
-}
-
-.footer__link--items h2 {
-  margin-bottom: 16px;
-}
-
-.footer__link--items > h2 {
-  color: #fff;
-}
-
-.footer__link--items a {
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 0.5rem;
-}
-
-.footer__link--items a:hover {
-  color: #e9e9e9;
-  transition: 0.3s ease-out;
-}
 
 /* Social Icons */
 .social__icon--link {
@@ -614,20 +575,11 @@
 /* Add styles to the form container */
 .form-container {
   width: 500px;
-  height: 200px;
-  padding: 10px;
-  border-radius: 20px;
-  background-color: #E0E0E0;
-  background-image: linear-gradient(
-    to right,
-    #D0D0D0 0%,
-    #B0B0B0 0%,
-    #909090 21%,
-    #707070 52%,
-    #505050 78%,
-    #303030 100%
-  );
-  background-size: 100%;
+  height: 450px;
+  border: 2px solid #444;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 #song-title {
@@ -662,7 +614,7 @@
 
 .label_songs {
   display: grid;
-  grid-template-columns: 5% 40% 35% 20%;
+  grid-template-columns: 5% 40% 30% 15% 10%;
   grid-column-gap: 0px;
   width: 100%;
   color: white;
@@ -709,7 +661,9 @@ background-color: #ff8177;
 .hovertext {
   position: absolute;
   display: flex;
-  z-index: 1;
+  padding: 2px;
+  border: 1px solid white;
+  /*transform: translate(-1px, -2px);*/
 }
 
 .hovertext:before {
@@ -724,7 +678,6 @@ background-color: #ff8177;
   padding: 5px 0;
   transition: opacity 1s ease-in-out;
   z-index: 999;
-
   position: absolute;
   left: 0;
   top: 110%;
@@ -733,7 +686,7 @@ background-color: #ff8177;
 .hovertext:hover:before {
   opacity: 1;
   visibility: visible;
-  z-index: 999;
+  /*z-index: 1;*/
 }
 
 /*CUSTOM CHECKBOX*/
@@ -850,9 +803,11 @@ background-color: #ff8177;
 
 .audio-player {
   height: 50px;
-  width: 350px;
+  width: 496px;
+  bottom: 2px;
+  position: absolute;
   background: #444;
-  box-shadow: 0 0 20px 0 #000 a;
+  /*box-shadow: 0 0 20px 0 #000;*/
   font-family: arial;
   color: white;
   font-size: 0.75em;
@@ -865,7 +820,7 @@ background-color: #ff8177;
   width: 100%;
   position: relative;
   cursor: pointer;
-  box-shadow: 0 2px 10px 0 #000 8;
+  box-shadow: 0 2px 10px 0 #000;
 }
 .audio-player .timeline .progress {
   background: coral;
@@ -976,7 +931,7 @@ background-color: #ff8177;
 	 --color-light: #fff;
 	 --color-brand: gray;
 	 --font-fam: 'Lato', sans-serif;
-	 --height: 5rem;
+	 --height: 3rem;
 	 --btn-width: 6rem;
 	 --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
@@ -988,7 +943,7 @@ background-color: #ff8177;
 	 border-radius: var(--rad);
 }
 .search__input {
-	 height: 5rem;
+	 height: 3rem;
 	 font-family: var(--font-fam);
 	 border: 0;
 	 color: var(--color-dark);
@@ -1011,7 +966,7 @@ background-color: #ff8177;
 	 font-family: var(--font-fam);
 	 border: 0;
 	 color: var(--color-dark);
-	 font-size: 1.8rem;
+	 font-size: 1.1rem;
 	 display: none;
 	 position: absolute;
 	 top: 0;
@@ -1039,7 +994,7 @@ background-color: #ff8177;
 }
 
 .btn-close {
-	 margin: 0;
+	 margin: 2%;
 	 border: 0;
 	 padding: 0;
 	 background: gray;
@@ -1052,6 +1007,7 @@ background-color: #ff8177;
 	 align-items: center;
 	 cursor: pointer;
 	 transition: all 150ms;
+     box-shadow: 0 0 20px 0 #000;
 }
  .btn-close .icon-cross {
 	 margin: 0;
@@ -1086,3 +1042,191 @@ background-color: #ff8177;
 	 background: red;
 }
 
+.download-container{
+  flaot: right;
+  margin: 2%;
+}
+
+body {
+	background-color: #1a1a1a;
+}
+
+.buttonDownload {
+	display: inline-block;
+	position: relative;
+	padding: 10px 25px;
+
+	background-color: gray;
+	color: white;
+
+	font-family: sans-serif;
+	text-decoration: none;
+	font-size: 0.9em;
+	text-align: center;
+	text-indent: 15px;
+}
+
+.buttonDownload:hover {
+	background-color: #333;
+	color: white;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 52%;
+}
+
+/* Download box shape  */
+.buttonDownload:before {
+	width: 10px;
+	height: 2px;
+	border-style: solid;
+	border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.buttonDownload:after {
+	width: 0;
+	height: 0;
+	margin-left: 3px;
+	margin-top: -7px;
+
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: transparent;
+	border-top-color: inherit;
+
+	animation: downloadArrow 2s linear infinite;
+	animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+	border-color: #ff8177;
+}
+
+.buttonDownload:hover:after {
+	border-top-color: #ff8177;
+	animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+	/* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+	0% {
+		margin-top: -7px;
+		opacity: 1;
+	}
+
+	0.001% {
+		margin-top: -15px;
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		margin-top: 0;
+		opacity: 0;
+	}
+}
+
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  height: 30px;
+  background-color: grey;
+  color: white;
+  font-family: sans-serif;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+
+.form-popup2 {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%); /* Firefox */
+  -ms-transform: translate(-50%, -50%);  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Safari and Chrome*/
+  -o-transform: translate(-50%, -50%); /* Opera */
+  transform: translate(-50%, -50%);
+}
+
+/* Add styles to the form container */
+.form-container2 {
+  width: 350px;
+  height: 400px;
+  border: 2px solid #444;
+  background-color: grey;
+}
+
+.logout_btn {
+  width: 90px;
+  height: 40px;
+  background-image: linear-gradient(to top, red 0%, #ff4422 100%);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.logout_btn:hover{
+  background-image: linear-gradient(to bottom, red 100%, #ff0844 0%);
+  text-decoration: none;
+}
+
+.logout_span{
+  text-align: center;
+  line-height: 40px;
+}
+
+.logout_span:hover{
+  text-decoration: none;
+}
+
+.playlist_content {
+  color: white;
+}
+
+#add_button {
+  color: #ff8177;
+}
+
+#aaa {
+  padding-top: 0.5px;
+}

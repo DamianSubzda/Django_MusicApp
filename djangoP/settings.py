@@ -39,11 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'crispy_forms',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
-
+    'payu_payment.apps.PayuPaymentConfig',
+    'paywix',
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -144,4 +147,12 @@ LOGOUT_REDIRECT_URL = "/login"
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'emails'
 
+#PAYU
+PAYU_CONFIG = {
+    "merchant_key": "3o6jgxhp",
+    "merchant_salt": "67bAgZX1B3",
+    "mode": "TEST",
+    "success_url": "http://127.0.0.1:8000/payu/success",
+    "failure_url": "http://127.0.0.1:8000/payu/failure"
+}
 
