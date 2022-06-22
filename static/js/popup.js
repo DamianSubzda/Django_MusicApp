@@ -2,7 +2,10 @@ let elTitle = document.getElementById("song-title");
 let elMp3_audio = document.getElementById("src-song-audio");
 let elBackground = document.getElementById("logo-background");
 let elMp3_download = document.getElementById("download_song");
-let elPlaylistadd = document.getElementById("playlist_add");
+let elPlaylistadd = document.getElementById("form-temp"); // ID song 2 popup
+//let elPlaylistadd2 = document.getElementById("form-temp2");
+let elnr = document.getElementById("nr-temp"); // ID song 1 popup
+let elplaylist = document.getElementsByClassName("playlist_add");
 
 
 function openForm(nr) {
@@ -10,6 +13,7 @@ function openForm(nr) {
   elTitle.innerHTML = Title[nr-1];
   elBackground.style.backgroundImage = "url(" + Image[nr-1]+ ")";
   elMp3_download.href = '/musics/' + Mp3[nr-1];
+  elnr.innerHTML = nr;
   document.getElementById("myForm").style.display = "flex";
 }
 
@@ -21,7 +25,19 @@ function closeForm() {
 
 
 function openForm2(nr) {
-  console.log("HELLO")
+  elPlaylistadd.innerHTML = elnr.innerHTML;
+  for(var i = 0; i < elplaylist.length; i++)
+  {
+    var splitURL = elplaylist[i].toString().split("/");
+    if(splitURL[splitURL.length - 1]===''){
+      elplaylist[i].href = elplaylist[i].href + elnr.innerHTML
+    }else{
+      splitURL.pop();
+      elplaylist[i].href = splitURL.join("/");
+      elplaylist[i].href = elplaylist[i].href +"/" +elnr.innerHTML
+    }
+    console.log(elplaylist[i].href);
+  }
   document.getElementById("myForm2").style.display = "flex";
 }
 

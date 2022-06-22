@@ -30,8 +30,7 @@
                     Mp3.push("{{ songs.Mp3 }}")
                     Image.push("{{ songs.Image.url }}")
                 </script>
-                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%"
-                     onclick="openForm({{ forloop.counter }})">
+                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%" onclick="openForm({{ forloop.counter }})">
                     <p style="color: white">
                     <div class="label_songs">
                         <div class="lp" id="lp-1">{{ forloop.counter }}</div>
@@ -48,14 +47,13 @@
                     </p>
                 </div>
                 <div class="form-popup" id="myForm">
-                    <form class="form-container" id="logo-background"
-                          style="background-image: url({{ songs.Image.url }});">
+                    <form class="form-container" id="logo-background" style="background-image: url({{ songs.Image.url }});">
                         <div class="close-container">
                             <button style="float: right;" type="button" class="btn-close" onclick="closeForm()">
                                 <span class="icon-cross"></span>
                             </button>
-
-                            <a style="cursor: pointer;"><i class="fa fa-heart" style="float:right; font-size: 40px; margin-top: 2%;" aria-hidden="true" onclick="openForm2({{ forloop.counter }})"></i></a>
+                            <div id="nr-temp" style="visibility: hidden; float: right;"></div>
+                            <a style="cursor: pointer;"><i class="fa fa-heart" style="float:right; font-size: 40px; margin-top: 2%;" aria-hidden="true" onclick="openForm2()"></i></a>
                         </div>
 
                         <div style="display: inline; width: 20px;">
@@ -106,9 +104,10 @@
                             </button>
                         </div>
                         <div style="margin-top: 20%; padding-left: 20px;">
+                            <div id="form-temp" style="visibility: hidden;">Hello</div>
                             <p style="font-size: 20px;">PlayLists:</p>
                             {% for playlists in playList %}
-                                {{ playlists.title }}<a style="float: right;" id="playlist_add" href="/add_song/{{playlists.id}}/{{songs.IdSong}}"><i class="fa fa-plus" aria-hidden="true"></i></a><br/>
+                                {{ playlists.title }}<a style="float: right;" class="playlist_add" href="/add_song/{{playlists.id}}/"><i class="fa fa-plus" aria-hidden="true"></i></a><br/>
                             {% endfor %}
                         </div>
 

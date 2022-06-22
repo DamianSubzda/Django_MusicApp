@@ -10,7 +10,6 @@ from .templatetags.has_group import has_group
 
 @login_required(login_url='/login')
 def home(response):
-    print("HELLO")
     searched = response.POST.get('searched', "")
     song = Song.objects.filter(Title__contains=searched)
     user = User.objects.all()
@@ -36,7 +35,6 @@ def base(response):
 def profile(response):
     form = PlayListForm()
     user = response.user
-    print(user)
 
     if response.method == 'POST':
         form = PlayListForm(response.POST)
@@ -73,11 +71,13 @@ def delete_song(request, id, song):
     instance[0].songs.remove(song)
     return HttpResponseRedirect("/profile")
 
-@login_required(login_url='/login')
-def add_song(request, id, song):
 
-    print(id)
-    print(song)
-    #instance = PlayList.objects.filter(id=id)
-    #instance[0].songs.remove(song)
-    return HttpResponseRedirect("/profile")
+@login_required(login_url='/login')  # Sprawdzić czy dana piosenka jest już w Playliście!
+def add_song(request, playlist_id, song_id):
+    playlists = PlayList.objects.filter(id=playlist_id)
+    songs = Song.objects.filter(IdSong=song_id)
+    print(playlists)
+    print(songs)
+    playlists[0].songs.add(songs[0])
+    playlists[0].save()
+    return HttpResponseRedirect("/home")
