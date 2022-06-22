@@ -12,6 +12,7 @@ urlpatterns = [
     path('base/', views.base, name="base"),
     path('delete_playlist/<id>', views.delete_playlist, name='delete_playlist'),
     path('delete_song/<id>/<song>', views.delete_song, name='delete'),
+    path('add_song/<id>/<song>', views.add_song, name='add'),
     path('search_playlist/<playlist>', views.search_playlist, name='search_playlist'),
     path('download/<song>', views.search_playlist, name='download_song'),
 ]

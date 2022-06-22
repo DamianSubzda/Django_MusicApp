@@ -2,6 +2,7 @@ let elTitle = document.getElementById("song-title");
 let elMp3_audio = document.getElementById("src-song-audio");
 let elBackground = document.getElementById("logo-background");
 let elMp3_download = document.getElementById("download_song");
+let elPlaylistadd = document.getElementById("playlist_add");
 
 
 function openForm(nr) {
@@ -14,8 +15,21 @@ function openForm(nr) {
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  document.getElementById("myForm2").style.display = "none";
   audio.pause();
 }
+
+
+function openForm2(nr) {
+  console.log("HELLO")
+  document.getElementById("myForm2").style.display = "flex";
+}
+
+function closeForm2() {
+  document.getElementById("myForm2").style.display = "none";
+}
+
+
 
 const audioPlayer = document.querySelector(".audio-player");
 const audio = new Audio(

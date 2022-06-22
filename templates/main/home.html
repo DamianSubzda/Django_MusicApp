@@ -54,8 +54,9 @@
                             <button style="float: right;" type="button" class="btn-close" onclick="closeForm()">
                                 <span class="icon-cross"></span>
                             </button>
-                        </div>
 
+                            <a style="cursor: pointer;"><i class="fa fa-heart" style="float:right; font-size: 40px; margin-top: 2%;" aria-hidden="true" onclick="openForm2({{ forloop.counter }})"></i></a>
+                        </div>
 
                         <div style="display: inline; width: 20px;">
 
@@ -67,22 +68,6 @@
                                    style="visibility: hidden;">Download</a>
                         {% endif %}
 
-                            <form>
-                              <div class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes()">
-                                  <select>
-                                    <option>Add to playlist:</option>
-                                  </select>
-                                  <div class="overSelect"></div>
-                                </div>
-                                <div id="checkboxes">
-                                    {% for playlists in playList %}
-                                      <label for="one">
-                                        <input type="checkbox" id="one-" />First checkbox</label>
-                                    {% endfor %}
-                                </div>
-                              </div>
-                            </form>
                         </div>
 
                         <div class="audio-player">
@@ -110,6 +95,23 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
+                </div>
+
+                <div class="form-popup2" id="myForm2">
+                    <form class="form-container2" style="background-color: #2f2f2f">
+                        <div class="close-container2">
+                            <button style="float: right;" type="button" class="btn-close" onclick="closeForm2()">
+                                <span class="icon-cross"></span>
+                            </button>
+                        </div>
+                        <div style="margin-top: 20%; padding-left: 20px;">
+                            <p style="font-size: 20px;">PlayLists:</p>
+                            {% for playlists in playList %}
+                                {{ playlists.title }}<a style="float: right;" id="playlist_add" href="/add_song/{{playlists.id}}/{{songs.IdSong}}"><i class="fa fa-plus" aria-hidden="true"></i></a><br/>
+                            {% endfor %}
+                        </div>
+
                     </form>
                 </div>
             {% endfor %}

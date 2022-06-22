@@ -35,7 +35,6 @@ class HomeView(View):
 
 
 class PayuView(View):
-    user_id = None
     template_name = 'payu/payu.html'
 
     def get(self, request, *args, **kwargs):
@@ -45,10 +44,10 @@ class PayuView(View):
         import uuid
         payload = {
             "amount": 100,
-            "firstname": "renjith",
-            "email": "renjithsraj@live.com",
+            "firstname": "firstName",
+            "email": "example@live.com",
             "phone": 9746272610,
-            "lastname": "s raj",
+            "lastname": "lastName",
             "productinfo": "Test Product",
             "address1": "Test address 1",
             "address2": "Test Address 2",

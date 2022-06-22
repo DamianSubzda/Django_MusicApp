@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.forms import BooleanField
+
 from main.helpers import get_audio_length
 
 
@@ -66,3 +68,4 @@ class PlayList(models.Model):
 
     def __str__(self):
         return self.title
+

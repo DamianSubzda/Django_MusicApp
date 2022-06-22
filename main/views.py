@@ -10,6 +10,7 @@ from .templatetags.has_group import has_group
 
 @login_required(login_url='/login')
 def home(response):
+    print("HELLO")
     searched = response.POST.get('searched', "")
     song = Song.objects.filter(Title__contains=searched)
     user = User.objects.all()
@@ -70,4 +71,13 @@ def delete_playlist(request, id):
 def delete_song(request, id, song):
     instance = PlayList.objects.filter(id=id)
     instance[0].songs.remove(song)
+    return HttpResponseRedirect("/profile")
+
+@login_required(login_url='/login')
+def add_song(request, id, song):
+
+    print(id)
+    print(song)
+    #instance = PlayList.objects.filter(id=id)
+    #instance[0].songs.remove(song)
     return HttpResponseRedirect("/profile")

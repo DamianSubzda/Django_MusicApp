@@ -36,6 +36,11 @@
                 {% endif %}
             </li>
             <li class="navbar__btn">
+                <a href="/logout" class="logout_btn">
+                    <span class="logout_span">Logout</span>
+                </a>
+            </li>
+            <li class="navbar__btn">
                 {% if user.is_authenticated %}
                     <div style="color: white">Welcome</br>{{ user.get_username }}!</div>
                 {% else %}

@@ -18,30 +18,31 @@
                     <td class="mandatory_header"><b>Mandatory Parameters</b></td>
                 </tr>
                 <tr>
-                    <td>Transaction ID: </td>
-                    <td><input name="txnid" value="{{ posted.txnid|default:'' }}" /></td>
-                </tr>
-                <tr>
-                    <td>Amount: </td>
-                    <td><input name="amount" value="{{ posted.amount|default:'' }}" /></td>
-                    <td>  First Name: </td>
-                    <td><input name="firstname" id="firstname" value="{{ posted.firstname|default:'' }}" /></td>
-                </tr>
-                <tr>
                     <td>Email: </td>
                     <td><input name="email" id="email" value="{{ posted.email|default:'' }}" /></td>
                     <td>Phone: </td>
                     <td><input name="phone" value="{{ posted.phone|default:'' }}" /></td>
                 </tr>
-                <tr>
-                    <td>Product Info: </td>
-                    <td colspan="3"><textarea name="productinfo">{{ posted.productinfo|default:'' }}</textarea></td>
-                </tr>
+
                 <td colspan="4">
                     <input style="
                     margin-top: 12px;
                     margin-left: 36%;" type="submit" class="btn-primary" value="SUBMIT">
                 </td>
+                </tr>
+                <tr style="visibility: hidden">
+                    <td style="visibility: hidden">Product Info: </td>
+                    <td colspan="3" style="visibility: hidden"><textarea style="visibility: hidden" name="productinfo">{{ posted.productinfo|default:'' }}</textarea></td>
+                </tr>
+                <tr style="visibility: hidden">
+                    <td style="visibility: hidden">Transaction ID: </td>
+                    <td style="visibility: hidden"><input style="visibility: hidden" name="txnid" value="{{ posted.txnid|default:'' }}" /></td>
+                </tr>
+                <tr style="visibility: hidden">
+                    <td style="visibility: hidden">Amount: </td>
+                    <td style="visibility: hidden"><input style="visibility: hidden" name="amount" value="{{ posted.amount|default:'' }}" /></td>
+                    <td style="visibility: hidden">  First Name: </td>
+                    <td style="visibility: hidden"><input style="visibility: hidden" name="firstname" id="firstname" value="{{ posted.firstname|default:'' }}" /></td>
                 </tr>
             </table>
             </form>
@@ -49,3 +50,4 @@
     </div>
 </div>
 {% endblock %}
+

@@ -1210,3 +1210,50 @@ body {
 #checkboxes label:hover {
   background-color: #1e90ff;
 }
+
+
+.form-popup2 {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%); /* Firefox */
+  -ms-transform: translate(-50%, -50%);  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Safari and Chrome*/
+  -o-transform: translate(-50%, -50%); /* Opera */
+  transform: translate(-50%, -50%);
+}
+
+/* Add styles to the form container */
+.form-container2 {
+  width: 350px;
+  height: 400px;
+  border: 2px solid #444;
+  background-color: grey;
+}
+
+.logout_btn {
+  width: 90px;
+  height: 40px;
+  background-image: linear-gradient(to top, red 0%, #ff4422 100%);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.logout_btn:hover{
+  background-image: linear-gradient(to bottom, red 100%, #ff0844 0%);
+  text-decoration: none;
+}
+
+.logout_span{
+  text-align: center;
+  line-height: 40px;
+}
+
+.logout_span:hover{
+  text-decoration: none;
+}
