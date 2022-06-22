@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from paywix.payu import Payu
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.contrib.auth.models import Group
+
 
 from main.models import *
 
@@ -82,7 +83,7 @@ def payu_checkout(request):
 def payu_failure(request):
     data = {k: v[0] for k, v in dict(request.POST).items()}
     response = payu.verify_transaction(data)
-    return JsonResponse(response)
+    return render(request, 'payu/payufailure.html')
 
 
 # Payu success return page
@@ -92,11 +93,6 @@ def payu_success(request):
     response = payu.verify_transaction(data)
     user_id = temp_x.getX()
     user1 = User.objects.filter(id=user_id)
-    if user1[0].is_superuser:
-        pass
-    else:
-        Account1 = Account.objects.get(user=user1[0])
-        Account1.premiumStatus = True
-        Account1.save()
-
-    return JsonResponse(response)
+    my_group = Group.objects.get(name='premiumUser')
+    my_group.user_set.add(user1[0])
+    return render(request, 'payu/payusuccess.html')

@@ -1,6 +1,7 @@
 {% extends 'main/index.html' %}
 {% load static %}
 {% block title %}
+{% load has_group %}
     <p style="text-align: center; font-family: Verdana, sans-serif; font-size: 6rem; color: white;
     background-color: #ff8177;
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
@@ -18,12 +19,18 @@
         <link rel="stylesheet" href="{% static 'css/profileStyle.css' %}" type="text/css"/>
     </head>
     <div class="premium_content">
-        <button class="premium_btn">
-            <a href="/payu"><span class="premium_btn_span">Get premium</span></a>
-        </button>
+        {% if not request.user|has_group:"premiumUser" %}
+            <button class="premium_btn">
+                <a href="/payu" class="premium_a"><span class="premium_btn_span">Get premium</span></a>
+            </button>
+        {% endif %}
     </div>
 
     <div class="title_content">
+        {% if not request.user|has_group:"premiumUser" %}
+            <p>Standardowi użytkownicy mogą tworzyć maksymalnie dwie playlisty!</p>
+        {% endif %}
+
         <p class="amount_label">Create playlist:</p>
         <form class="title_form" method="POST" action="">
             {% csrf_token %}
@@ -38,13 +45,13 @@
         {% for playlists in playList %}
             <button type="button" class="collapsible">
                 &nbsp;{{ playlists.title }}
-                <a style="float: right;" href="/delete_playlist/{{playlists.id}}"><i class="fa fa-trash-o" style="font-size:36px"></i></a>
-                <a style="float: right; margin-right: 15px" href="/search_playlist/{{playlists.id}}"><i class="fa fa-play-circle-o" style="font-size:36px"></i></a>
+                <a style="float: right;" href="/delete_playlist/{{playlists.id}}"><i class="fa fa-trash-o" style="font-size:36px; color: #ff0844"></i></a>
+                <a style="float: right; margin-right: 15px" href="/search_playlist/{{playlists.id}}"><i class="fa fa-play-circle-o" style="font-size:36px; color: #ff0844"></i></a>
             </button>
             <div class="content">
-                    {% for songs in playlists.songs.all %}
-                        {{ songs }}<a style="float: right;" href="/delete_song/{{playlists.id}}/{{songs.IdSong}}"><i class="fa fa-trash-o" style="font-size:24px; color: black;"></i></a><br/>
-                    {% endfor %}
+                {% for songs in playlists.songs.all %}
+                    {{forloop.counter}}.&nbsp;&nbsp;{{ songs }}<a style="float: right;" href="/delete_song/{{playlists.id}}/{{songs.IdSong}}"><i class="fa fa-trash-o"  style="font-size:24px; color: #ff0844;"></i></a><br/>
+                {% endfor %}
             </div>
         {% endfor %}
     </div>

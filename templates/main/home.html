@@ -1,12 +1,13 @@
 {% extends 'main/index.html' %}
 {% load static %}
+{% load has_group %}
 
 {% block content %}
-    <div class="main__searcher" style =" padding-top: 2%">
+    <div class="main__searcher" style=" padding-top: 2%">
         <form class="search__form" method="POST">
             {% csrf_token %}
             <label class="search__label" for="search">Search for stuff</label>
-            <input name="searched" class="search__input" placeholder="Search..." autofocus required />
+            <input name="searched" class="search__input" placeholder="Search..." autofocus required/>
             <input class="search__button" type="submit" value="Search">
         </form>
     </div>
@@ -34,11 +35,12 @@
                     <p style="color: white">
                     <div class="label_songs">
                         <div class="lp" id="lp-1">{{ forloop.counter }}</div>
-                        <div class="lp">{{ songs.Title }} </div>
+                        <div class="lp">{{ songs.Title }} {{ user.account.premiumStatus }} </div>
                         <div class="lp">{{ songs.Team }}</div>
                         <div class="lp">{{ songs.getDuration }}</div>
                         <div class="lp">
-                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team: {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
+                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team:
+                                    {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
                                 INFO
                             </p>
                         </div>
@@ -46,40 +48,67 @@
                     </p>
                 </div>
                 <div class="form-popup" id="myForm">
-                    <form class="form-container" id ="logo-background" style ="background-image: url({{ songs.Image.url }});">
+                    <form class="form-container" id="logo-background"
+                          style="background-image: url({{ songs.Image.url }});">
                         <div class="close-container">
                             <button style="float: right;" type="button" class="btn-close" onclick="closeForm()">
-                              <span class="icon-cross"></span>
+                                <span class="icon-cross"></span>
                             </button>
                         </div>
 
-                        <a href="#" class="buttonDownload">Download</a>
 
-                            <div class="audio-player">
-                                <div class="timeline">
-                                    <div class="progress"></div>
-                                </div>
-                                <div class="controls">
-                                    <div class="play-container">
-                                        <div class="icono-play">
-                                        </div>
-                                    </div>
-                                    <div class="time">
-                                        <div class="current">0:00</div>
-                                        <div class="divider">/</div>
-                                        <div class="length"></div>
-                                    </div>
-                                    <div class="name" id="song-title">{{ songs.Title }}</div>
-                                    <div class="volume-container">
-                                        <div class="volume-button">
-                                            <div class="volume icono-volumeMedium"></div>
-                                        </div>
+                        <div style="display: inline; width: 20px;">
 
-                                        <div class="volume-slider">
-                                            <div class="volume-percentage"></div>
-                                        </div>
+                        {% if request.user|has_group:"premiumUser" %}
+                            <a href="{{ songs.Mp3.url }}" download class="buttonDownload" id="download_song"
+                               style="visibility: visible;">Download</a>
+                        {% else %}
+                            <a href="{{ songs.Mp3.url }}" download class="buttonDownload" id="download_song"
+                                   style="visibility: hidden;">Download</a>
+                        {% endif %}
+
+                            <form>
+                              <div class="multiselect">
+                                <div class="selectBox" onclick="showCheckboxes()">
+                                  <select>
+                                    <option>Add to playlist:</option>
+                                  </select>
+                                  <div class="overSelect"></div>
+                                </div>
+                                <div id="checkboxes">
+                                    {% for playlists in playList %}
+                                      <label for="one">
+                                        <input type="checkbox" id="one-" />First checkbox</label>
+                                    {% endfor %}
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+
+                        <div class="audio-player">
+                            <div class="timeline">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="controls">
+                                <div class="play-container">
+                                    <div class="icono-play">
                                     </div>
                                 </div>
+                                <div class="time">
+                                    <div class="current">0:00</div>
+                                    <div class="divider">/</div>
+                                    <div class="length"></div>
+                                </div>
+                                <div class="name" id="song-title">{{ songs.Title }}</div>
+                                <div class="volume-container">
+                                    <div class="volume-button">
+                                        <div class="volume icono-volumeMedium"></div>
+                                    </div>
+                                    <div class="volume-slider">
+                                        <div class="volume-percentage"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

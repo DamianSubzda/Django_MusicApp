@@ -23,3 +23,7 @@ table {
 .mandatory_header {
   font-size: 2rem;
 }
+
+input, textarea{
+  color: black;
+}

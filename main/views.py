@@ -3,22 +3,25 @@ from django.shortcuts import render
 from .models import *
 from django.contrib.auth.decorators import login_required
 from main.forms import PlayListForm
+from django import template
 
+from .templatetags.has_group import has_group
 
-# Create your views here.
 
 @login_required(login_url='/login')
 def home(response):
     searched = response.POST.get('searched', "")
     song = Song.objects.filter(Title__contains=searched)
-    user = Account.objects.all()
-    return render(response, "main/home.html", {"song": song, "acc": user})
+    user = User.objects.all()
+    playList = PlayList.objects.filter(idUser=response.user)
+    return render(response, "main/home.html", {"song": song, "acc": user, "playList": playList})
+
 
 @login_required(login_url='/login')
 def search_playlist(response, playlist):
     instance = PlayList.objects.filter(id=playlist)
     song = instance[0].songs.all()
-    user = Account.objects.all()
+    user = User.objects.all()
     return render(response, "main/home.html", {"song": song, "acc": user})
 
 
@@ -28,16 +31,30 @@ def base(response):
     return render(response, "main/index.html", {"song": song})
 
 
-@login_required(login_url='/login') #https://www.youtube.com/watch?v=EX6Tt-ZW0so&ab_channel=DennisIvy
+@login_required(login_url='/login')
 def profile(response):
     form = PlayListForm()
     user = response.user
+    print(user)
+
     if response.method == 'POST':
         form = PlayListForm(response.POST)
         form.instance.idUser = user
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/profile")
+
+        if response.user.is_superuser:
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect("/profile")
+        else:
+            if not has_group(user, "premiumUser"):
+                if len(PlayList.objects.filter(idUser=response.user)) < 2:
+                    if form.is_valid():
+                        form.save()
+                        return HttpResponseRedirect("/profile")
+            else:
+                if form.is_valid():
+                    form.save()
+                    return HttpResponseRedirect("/profile")
     playList = PlayList.objects.filter(idUser=response.user)
     return render(response, "main/profile.html", {"PlayListForm": form, "playList": playList})
 
@@ -47,6 +64,7 @@ def delete_playlist(request, id):
     instance = PlayList.objects.filter(id=id)
     instance.delete()
     return HttpResponseRedirect("/profile")
+
 
 @login_required(login_url='/login')
 def delete_song(request, id, song):

@@ -1,12 +1,14 @@
 let elTitle = document.getElementById("song-title");
 let elMp3_audio = document.getElementById("src-song-audio");
 let elBackground = document.getElementById("logo-background");
+let elMp3_download = document.getElementById("download_song");
+
 
 function openForm(nr) {
   audio.src = '/musics/' + Mp3[nr-1];
   elTitle.innerHTML = Title[nr-1];
   elBackground.style.backgroundImage = "url(" + Image[nr-1]+ ")";
-  console.log(elBackground.style.backgroundImage)
+  elMp3_download.href = '/musics/' + Mp3[nr-1];
   document.getElementById("myForm").style.display = "flex";
 }
 

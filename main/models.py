@@ -1,26 +1,8 @@
-from datetime import datetime
-
-import mutagen
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.contrib.auth.models import User
 from main.helpers import get_audio_length
-
-
-class Account(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    premiumStatus = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.user.username
-
-    def setPremium(self):
-        self.premiumStatus = True
-        return self.premiumStatus
-
-    def getName(self):
-        return str(self.user.username)
 
 
 class Friend(models.Model):
