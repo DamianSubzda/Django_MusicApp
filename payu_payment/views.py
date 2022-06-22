@@ -1,10 +1,10 @@
-
 from django.shortcuts import render
 from django.views import View
-from django.conf import settings
 from paywix.payu import Payu
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+
+from main.models import *
 
 payu_config = settings.PAYU_CONFIG
 merchant_key = payu_config.get('merchant_key')
@@ -16,6 +16,16 @@ mode = payu_config.get('mode')
 payu = Payu(merchant_key, merchant_salt, surl, furl, mode)
 
 
+class Temp():
+    x = None
+
+    def setX(self, x):
+        self.x = x
+
+    def getX(self):
+        return self.x
+
+
 class HomeView(View):
     template_name = 'home.html'
 
@@ -24,12 +34,16 @@ class HomeView(View):
 
 
 class PayuView(View):
+    user_id = None
     template_name = 'payu/payu.html'
 
     def get(self, request, *args, **kwargs):
+        global temp_x
+        temp_x = Temp()
+        temp_x.setX(request.user.id)
         import uuid
         payload = {
-            "amount": 130,
+            "amount": 100,
             "firstname": "renjith",
             "email": "renjithsraj@live.com",
             "phone": 9746272610,
@@ -46,7 +60,6 @@ class PayuView(View):
         return render(request, self.template_name, {'posted': payload})
 
     def post(self, request, *args, **kwargs):
-        print("Inside Class Based View")
         data = {k: v[0] for k, v in dict(request.POST).items()}
         data.pop('csrfmiddlewaretoken')
         payu_data = payu.transaction(**data)
@@ -63,6 +76,7 @@ def payu_checkout(request):
         return render(request, 'payu/checkout.html', {"posted": payu_data})
     return render(request, 'payu/payu.html', {'posted': ""})
 
+
 # Payu failure page
 @csrf_exempt
 def payu_failure(request):
@@ -76,9 +90,13 @@ def payu_failure(request):
 def payu_success(request):
     data = {k: v[0] for k, v in dict(request.POST).items()}
     response = payu.verify_transaction(data)
+    user_id = temp_x.getX()
+    user1 = User.objects.filter(id=user_id)
+    if user1[0].is_superuser:
+        pass
+    else:
+        Account1 = Account.objects.get(user=user1[0])
+        Account1.premiumStatus = True
+        Account1.save()
+
     return JsonResponse(response)
-
-
-
-
-

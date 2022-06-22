@@ -38,7 +38,7 @@
                         <div class="lp">{{ songs.Team }}</div>
                         <div class="lp">{{ songs.getDuration }}</div>
                         <div class="lp">
-                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team:w {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
+                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team: {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
                                 INFO
                             </p>
                         </div>
@@ -52,34 +52,34 @@
                               <span class="icon-cross"></span>
                             </button>
                         </div>
-                        <div class="download-container">
-{#                            <button><a href="">DOWNLOAD</a></button>#}
-                        </div>
-                            <div class="audio-player">
-                            <div class="timeline">
-                                <div class="progress"></div>
-                            </div>
-                            <div class="controls">
-                                <div class="play-container">
-                                    <div class="icono-play">
-                                    </div>
-                                </div>
-                                <div class="time">
-                                    <div class="current">0:00</div>
-                                    <div class="divider">/</div>
-                                    <div class="length"></div>
-                                </div>
-                                <div class="name" id="song-title">{{ songs.Title }}</div>
-                                <div class="volume-container">
-                                    <div class="volume-button">
-                                        <div class="volume icono-volumeMedium"></div>
-                                    </div>
 
-                                    <div class="volume-slider">
-                                        <div class="volume-percentage"></div>
+                        <a href="#" class="buttonDownload">Download</a>
+
+                            <div class="audio-player">
+                                <div class="timeline">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="controls">
+                                    <div class="play-container">
+                                        <div class="icono-play">
+                                        </div>
+                                    </div>
+                                    <div class="time">
+                                        <div class="current">0:00</div>
+                                        <div class="divider">/</div>
+                                        <div class="length"></div>
+                                    </div>
+                                    <div class="name" id="song-title">{{ songs.Title }}</div>
+                                    <div class="volume-container">
+                                        <div class="volume-button">
+                                            <div class="volume icono-volumeMedium"></div>
+                                        </div>
+
+                                        <div class="volume-slider">
+                                            <div class="volume-percentage"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </form>
                 </div>

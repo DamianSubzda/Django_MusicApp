@@ -39,7 +39,7 @@
             <button type="button" class="collapsible">
                 &nbsp;{{ playlists.title }}
                 <a style="float: right;" href="/delete_playlist/{{playlists.id}}"><i class="fa fa-trash-o" style="font-size:36px"></i></a>
-                <a style="float: right; margin-right: 15px" href="/search_playlist/{{playlists.id}}"><i class="fa fa-play-circle-o" style="font-size:36px"></i></a> {# TODO HREF #}
+                <a style="float: right; margin-right: 15px" href="/search_playlist/{{playlists.id}}"><i class="fa fa-play-circle-o" style="font-size:36px"></i></a>
             </button>
             <div class="content">
                     {% for songs in playlists.songs.all %}

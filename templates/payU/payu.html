@@ -1,4 +1,11 @@
-<hr>
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/payuStyle.css' %}" type="text/css"/>
+    </head>
+  <br>
 <div class="row">
 </div>
 <div class="row">
@@ -8,7 +15,7 @@
                 {% csrf_token %}
             <table>
                 <tr>
-                    <td><b>Mandatory Parameters</b></td>
+                    <td class="mandatory_header"><b>Mandatory Parameters</b></td>
                 </tr>
                 <tr>
                     <td>Transaction ID: </td>
@@ -17,7 +24,7 @@
                 <tr>
                     <td>Amount: </td>
                     <td><input name="amount" value="{{ posted.amount|default:'' }}" /></td>
-                    <td>First Name: </td>
+                    <td>  First Name: </td>
                     <td><input name="firstname" id="firstname" value="{{ posted.firstname|default:'' }}" /></td>
                 </tr>
                 <tr>
@@ -33,7 +40,7 @@
                 <td colspan="4">
                     <input style="
                     margin-top: 12px;
-                    margin-left: 36%;" type="submit" class="btn btn-primary btn-lg" value="SUBMIT">
+                    margin-left: 36%;" type="submit" class="btn-primary" value="SUBMIT">
                 </td>
                 </tr>
             </table>
@@ -41,3 +48,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

@@ -15,6 +15,10 @@ class Account(models.Model):
     def __str__(self):
         return self.user.username
 
+    def setPremium(self):
+        self.premiumStatus = True
+        return self.premiumStatus
+
     def getName(self):
         return str(self.user.username)
 

@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'crispy_forms',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
     'payu_payment.apps.PayuPaymentConfig',
-    'paywix'
+    'paywix',
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
