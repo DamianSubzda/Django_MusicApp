@@ -3,8 +3,6 @@ from django.views import View
 from paywix.payu import Payu
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import Group
-
-
 from main.models import *
 
 payu_config = settings.PAYU_CONFIG

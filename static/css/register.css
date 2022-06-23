@@ -1,37 +1,36 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Kumbh Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Kumbh Sans", sans-serif;
 }
 
-body{
+body {
     background: #131313;
 }
 
 /*center all containners*/
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#log{
+#log {
     margin: 30vh auto;
 }
 
-#reg{
+#reg {
     margin: 15vh auto;
 }
 
-#res-form{
+#res-form {
     margin: 45vh auto
 }
 
 
-
-.register-login{
-    padding: 1%  5% 5%;
+.register-login {
+    padding: 1% 5% 5%;
     font-size: 1.4rem;
     color: #fff;
     margin: auto;
@@ -45,7 +44,7 @@ body{
     border-radius: 4px;
 }
 
-.username-div{
+.username-div {
     position: relative;
     text-align: center;
     width: 100%;
@@ -54,13 +53,14 @@ body{
     margin: 0;
 }
 
-.button-div{
+.button-div {
     margin-top: 5%;
     display: flex;
     position: relative;
     justify-content: center;
 }
-button{
+
+button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,7 +77,7 @@ button{
 }
 
 
-.form-div{
+.form-div {
     background: #21d4fd;
     color: #4837ff;
 }

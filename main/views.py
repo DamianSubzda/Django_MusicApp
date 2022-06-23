@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
 from main.forms import PlayListForm
 from .models import *
 from .templatetags.has_group import has_group
@@ -71,12 +70,10 @@ def delete_song(request, id, song):
     return HttpResponseRedirect("/profile")
 
 
-@login_required(login_url='/login')  # Sprawdzić czy dana piosenka jest już w Playliście!
+@login_required(login_url='/login')
 def add_song(request, playlist_id, song_id):
     playlists = PlayList.objects.filter(id=playlist_id)
     songs = Song.objects.filter(IdSong=song_id)
-    print(playlists)
-    print(songs)
     playlists[0].songs.add(songs[0])
     playlists[0].save()
     return HttpResponseRedirect("/home")
