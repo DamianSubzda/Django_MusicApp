@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from main import views
 
-
-
 urlpatterns = [
     path('', include("main.urls")),
     path('', include("register.urls")),

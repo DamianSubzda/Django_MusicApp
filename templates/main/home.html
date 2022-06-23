@@ -30,7 +30,8 @@
                     Mp3.push("{{ songs.Mp3 }}")
                     Image.push("{{ songs.Image.url }}")
                 </script>
-                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%" onclick="openForm({{ forloop.counter }})">
+                <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%"
+                     onclick="openForm({{ forloop.counter }})">
                     <p style="color: white">
                     <div class="label_songs">
                         <div class="lp" id="lp-1">{{ forloop.counter }}</div>
@@ -38,8 +39,8 @@
                         <div class="lp">{{ songs.Team }}</div>
                         <div class="lp">{{ songs.getDuration }}</div>
                         <div class="lp">
-                            <p class="hovertext" data-hover="Title: {{ songs.Title }}&#13;Team:
-                                    {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }}{% endfor %}">
+                            <p class="hovertext" data-hover="Team:
+                                    {% for singers in songs.Team.singers.all %}{{ singers.fName }} {{ singers.sName }};{% endfor %}">
                                 INFO
                             </p>
                         </div>
@@ -47,24 +48,27 @@
                     </p>
                 </div>
                 <div class="form-popup" id="myForm">
-                    <form class="form-container" id="logo-background" style="background-image: url({{ songs.Image.url }});">
+                    <form class="form-container" id="logo-background"
+                          style="background-image: url({{ songs.Image.url }});">
                         <div class="close-container">
                             <button style="float: right;" type="button" class="btn-close" onclick="closeForm()">
                                 <span class="icon-cross"></span>
                             </button>
                             <div id="nr-temp" style="visibility: hidden; float: right;"></div>
-                            <a style="cursor: pointer;"><i class="fa fa-heart" style="float:right; font-size: 40px; margin-top: 2%;" aria-hidden="true" onclick="openForm2()"></i></a>
+                            <a style="cursor: pointer;"><i class="fa fa-heart"
+                                                           style="float:right; font-size: 40px; margin-top: 2%;"
+                                                           aria-hidden="true" onclick="openForm2()"></i></a>
                         </div>
 
                         <div style="display: inline; width: 20px;">
 
-                        {% if request.user|has_group:"premiumUser" %}
-                            <a href="{{ songs.Mp3.url }}" download class="buttonDownload" id="download_song"
-                               style="visibility: visible;">Download</a>
-                        {% else %}
-                            <a href="{{ songs.Mp3.url }}" download class="buttonDownload" id="download_song"
+                            {% if request.user|has_group:"premiumUser" %}
+                                <a href="{{ songs.Mp3.url }}" download class="buttonDownload" id="download_song"
+                                   style="visibility: visible;">Download</a>
+                            {% else %}
+                                <a href="{{ songs.Mp3.url }}" download class="buttonDownload" id="download_song"
                                    style="visibility: hidden;">Download</a>
-                        {% endif %}
+                            {% endif %}
 
                         </div>
 
@@ -103,12 +107,20 @@
                                 <span class="icon-cross"></span>
                             </button>
                         </div>
-                        <div style="margin-top: 20%; padding-left: 20px;">
+                        <div class="playlist_content" style="margin-top: 12%; padding-left: 20px; padding-right: 20px;">
                             <div id="form-temp" style="visibility: hidden;">Hello</div>
-                            <p style="font-size: 20px;">PlayLists:</p>
-                            {% for playlists in playList %}
-                                {{ playlists.title }}<a style="float: right;" class="playlist_add" href="/add_song/{{playlists.id}}/"><i class="fa fa-plus" aria-hidden="true"></i></a><br/>
-                            {% endfor %}
+                            <p style="font-size: 30px; border-bottom: 20px; border-top: 20px; margin-bottom: 20px;">
+                                PlayLists:</p>
+                            <div class="playlist_list" style="font-size: 15px; max-height: 100%">
+                                {% for playlists in playList %}
+                                    <div id="aaa">
+                                        {{ playlists.title }}<a style="float: right;" class="playlist_add"
+                                                                href="/add_song/{{ playlists.id }}/"><i
+                                            class="fa fa-plus" id="add_button" style="" aria-hidden="true"></i></a><br/>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
                         </div>
 
                     </form>

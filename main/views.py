@@ -1,10 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .models import *
-from django.contrib.auth.decorators import login_required
-from main.forms import PlayListForm
-from django import template
 
+from main.forms import PlayListForm
+from .models import *
 from .templatetags.has_group import has_group
 
 

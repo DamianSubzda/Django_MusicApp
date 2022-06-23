@@ -1,146 +1,153 @@
 * {
-  font-family: "Kumbh Sans", sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
 }
-
 
 
 .pay_content {
-  display: inline;
+    display: inline;
 }
 
-.amount_label{
-  display: inline;
-  color: #fff;
+.amount_label {
+    display: inline;
+    color: #fff;
 }
 
 .title_content {
-  color: #fff;
+    color: #fff;
 }
 
-.premium_content{
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.premium_content {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .premium_a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .premium_a:hover {
-  color: #fff;
+    color: #fff;
 }
 
 .premium_btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-  border-radius: 40px;
-  box-sizing: border-box;
-  color: #ff8177;
-  display: block;
-  height: 50px;
-  font-size: 1.4em;
-  padding: 4px;
-  position: relative;
-  text-decoration: none;
-  width: 15em;
-  z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #ff8177;
+    display: block;
+    height: 50px;
+    font-size: 1.4em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 15em;
+    z-index: 2;
 }
+
 .premium_btn:hover {
-  color: #fff;
+    color: #fff;
 }
+
 .premium_btn .premium_btn_span {
-  align-items: center;
-  /* -webkit-text-stroke: 0.5px black; */
-  background: #131313;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  transition: background 0.5s ease;
-  width: 100%;
+    align-items: center;
+    /* -webkit-text-stroke: 0.5px black; */
+    background: #131313;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
 }
 
 
 .premium_btn:hover .premium_btn_span {
-  background: transparent;
+    background: transparent;
 }
 
 .send_button {
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-  border: none;
-  border-radius: 3px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
-.send_button:hover{
+.send_button:hover {
     background-image: linear-gradient(to bottom, #ff0844 100%, #ffb199 0%);
 }
 
 .customTable {
-  width: 100%;
-  background-color: #424242;
-  border-collapse: collapse;
-  border-width: 3px;
-  border-color: #9E0606;
-  border-style: solid;
-  color: #FFFFFF;
+    width: 100%;
+    background-color: #424242;
+    border-collapse: collapse;
+    border-width: 3px;
+    border-color: #9E0606;
+    border-style: solid;
+    color: #FFFFFF;
 }
 
 .customTable thead {
-  background-color: #B0B0B0;
+    background-color: #B0B0B0;
 }
+
 .collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 1.2rem
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.5rem
 }
 
 .active, .collapsible:hover {
-  background-color: #555;
+    background-color: #555;
 }
 
 .collapsible:after {
-  content: '\002B';
-  color: white;
-  font-weight: bold;
-  float: left;
-  margin-left: 5px;
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: left;
+    margin-left: 5px;
 }
 
 .active:after {
-  content: "\2212";
+    content: "\2212";
+}
+
+.for_expansion {
+    overflow: auto;
+    height: 100%;
 }
 
 .content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #777;
-  color: black;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  font-size: 1.1rem;
-;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #777;
+    color: black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 1.1rem;;
 }
-.customTable-name{
-  margin-top: 20px;
-  color: #fff;
+
+.customTable-name {
+    margin-top: 20px;
+    color: #fff;
 }

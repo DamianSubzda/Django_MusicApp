@@ -2,18 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.forms import BooleanField
-
 from main.helpers import get_audio_length
 
-
-class Friend(models.Model):
-    idUSer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                               related_name="friendship_creator_set")
-    friend = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                               related_name="friend_set", default=0)
-
-# https://medium.com/analytics-vidhya/add-friends-with-689a2fa4e41d
 
 class Singer(models.Model):
     idSinger = models.AutoField(primary_key=True, null=False, blank=False)
@@ -23,6 +13,7 @@ class Singer(models.Model):
 
     def __str__(self):
         return str(self.idSinger) + " " + self.fName + " " + self.sName
+
 
 class Team(models.Model):
     Name = models.CharField(primary_key=True, max_length=100, null=False, blank=False)
