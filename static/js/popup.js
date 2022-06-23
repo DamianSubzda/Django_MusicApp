@@ -12,7 +12,7 @@ function openForm(nr) {
     elTitle.innerHTML = Title[nr - 1];
     elBackground.style.backgroundImage = "url(" + Image[nr - 1] + ")";
     elMp3_download.href = '/musics/' + Mp3[nr - 1];
-    elnr.innerHTML = nr;
+    elnr.innerHTML = IDsong[nr-1];
     document.getElementById("myForm").style.display = "flex";
 }
 

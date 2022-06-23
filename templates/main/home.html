@@ -22,6 +22,7 @@
             let Title = []
             let Mp3 = []
             let Image = []
+            let IDsong = []
         </script>
         <div class="songs" style="width: 100%">
             {% for songs in song %}
@@ -29,6 +30,7 @@
                     Title.push("{{ songs.Title }}")
                     Mp3.push("{{ songs.Mp3 }}")
                     Image.push("{{ songs.Image.url }}")
+                    IDsong.push("{{ songs.IdSong }}")
                 </script>
                 <div class="box" style="margin-bottom: 5px; padding: 10px; width: 100%"
                      onclick="openForm({{ forloop.counter }})">

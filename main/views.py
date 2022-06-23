@@ -74,6 +74,10 @@ def delete_song(request, id, song):
 def add_song(request, playlist_id, song_id):
     playlists = PlayList.objects.filter(id=playlist_id)
     songs = Song.objects.filter(IdSong=song_id)
+    songs2 = Song.objects.all()
+    print(playlists)
+    print(songs2[0].IdSong)
+    print(songs2[0].Title)
     playlists[0].songs.add(songs[0])
     playlists[0].save()
     return HttpResponseRedirect("/home")
